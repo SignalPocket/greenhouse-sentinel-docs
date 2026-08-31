@@ -6,6 +6,7 @@ site_url = "https://signalpocket.github.io/greenhouse-sentinel-docs/"
 repo_url = "https://github.com/SignalPocket/greenhouse-sentinel-docs"
 repo_name = "SignalPocket/greenhouse-sentinel-docs"
 copyright = "Copyright © 2026 Katie Kearns · Fictional product, real workflow"
+extra_css = ["assets/stylesheets/brand-2026.css"]
 
 nav = [
   { "Overview" = "index.md" },
@@ -58,9 +59,6 @@ toggle.name = "Switch to light mode"
 
 [project.extra]
 generator = false
-
-[project.extra_css]
-files = ["assets/stylesheets/brand-2026.css"]
 
 [project.markdown_extensions]
 admonition = {}
