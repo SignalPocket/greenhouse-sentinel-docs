@@ -41,6 +41,14 @@ def shade(cell, fill):
     cell._tc.get_or_add_tcPr().append(shd)
 
 
+def repeat_table_header(row):
+    """Repeat a table's header row when it continues on another page."""
+    tr_pr = row._tr.get_or_add_trPr()
+    header = OxmlElement("w:tblHeader")
+    header.set(qn("w:val"), "true")
+    tr_pr.append(header)
+
+
 def add_field(paragraph, instruction, fallback="1"):
     """Add a Word field with visible fallback text for headless renderers."""
     begin = OxmlElement("w:fldChar")
@@ -119,6 +127,7 @@ def add_page(doc, path):
                 for i, value in enumerate(rows[0]):
                     table.rows[0].cells[i].text = value; shade(table.rows[0].cells[i], "075E54")
                     for run in table.rows[0].cells[i].paragraphs[0].runs: run.font.color.rgb = RGBColor(255,255,255); run.bold = True
+                repeat_table_header(table.rows[0])
                 for values in rows[2:]:
                     cells = table.add_row().cells
                     for i, value in enumerate(values): cells[i].text = value
@@ -136,6 +145,8 @@ def add_page(doc, path):
             doc.add_heading(heading.group(2), level=level)
         elif re.match(r"^\d+\.\s+", line):
             p = doc.add_paragraph(style="List Number"); add_inline(p, re.sub(r"^\d+\.\s+", "", line))
+            p.paragraph_format.left_indent = Inches(0.4)
+            p.paragraph_format.first_line_indent = Inches(-0.25)
             if not in_numbered_list: restart_numbering(doc, p)
             in_numbered_list = True
         elif line.startswith("- "):
