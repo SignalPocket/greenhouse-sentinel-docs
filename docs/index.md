@@ -34,15 +34,17 @@ The Word and PDF files are not separately maintained copies. When an approved Ma
 
 Each feature is implemented in the public repository, not merely described in the portfolio narrative.
 
-- **Single-Source Authoring.** **Made with:** one reviewed set of Markdown files under `docs/`. **Why it helps:** authors make a change once instead of reconciling separate website, Word, and PDF copies.
-- **Explicit Navigation.** **Made with:** an ordered `nav` list in `zensical.toml` plus a check for unlisted pages. **Why it helps:** readers get a deliberate sequence, and reviewers can trace every published page to the configuration that includes it.
-- **Stable Cross-References.** **Made with:** deliberate anchors on important targets, as shown by [Decision States](product/architecture.md#decision-states), and automated fragment checks. **Why it helps:** heading edits cannot silently strand important links.
-- **Automated Validation.** **Made with:** `scripts/validate_docs.py`, which checks navigation, files, internal links, anchors, heading structure, and image text. **Why it helps:** routine defects are found in seconds and resolved before publication rather than during manual review.
-- **Continuous Integration and Publishing.** **Made with:** a GitHub Actions workflow that repeats validation and generation from a clean copy of each proposed change. **Why it helps:** every release follows the same recorded process, which improves consistency, accuracy, and traceability.
-- **Accessible Authoring.** **Made with:** source standards, validation rules, accessible theme overrides, and a release checklist. **Why it helps:** accessibility is addressed while content is written and reviewed instead of being treated as a late repair.
-- **Replaceable Branding.** **Made with:** CSS variables, a separate logo asset, and publishing configuration outside the Markdown. **Why it helps:** an organization can change the visual identity without rewriting or forking the technical content.
-- **Multi-Format Delivery.** **Made with:** Zensical for HTML, a Python export script for Word, and headless LibreOffice for PDF. **Why it helps:** teams serve web and portable-document readers without maintaining three competing sources.
-- **Self-Documentation.** **Made with:** implementation notes, a complete build chapter, contributor guidance, and links to the actual configuration and scripts. **Why it helps:** another writer can inspect, explain, reproduce, or adapt the workflow without relying on undocumented setup knowledge.
+| Feature | Made With | Why It Helps |
+| --- | --- | --- |
+| Single-Source Authoring | One reviewed set of Markdown files under `docs/` | Authors change content once instead of reconciling separate website, Word, and PDF copies |
+| Explicit Navigation | An ordered `nav` list in `zensical.toml` plus a check for unlisted pages | Readers get a deliberate sequence, and reviewers can trace every published page to its configuration |
+| Stable Cross-References | Deliberate anchors on important targets, as shown by [Decision States](product/architecture.md#decision-states), plus automated fragment checks | Heading edits cannot silently strand important links |
+| Automated Validation | `scripts/validate_docs.py`, which checks navigation, files, links, anchors, heading structure, and image text | Routine defects are found in seconds and resolved before publication |
+| Continuous Integration and Publishing | A GitHub Actions workflow that repeats validation and generation from a clean copy of each proposed change | Every release follows the same recorded process, improving consistency, accuracy, and traceability |
+| Accessible Authoring | Source standards, validation rules, accessible theme overrides, and a release checklist | Accessibility is addressed while content is written and reviewed instead of as a late repair |
+| Replaceable Branding | CSS variables, a separate logo asset, and publishing configuration outside the Markdown | An organization can change the visual identity without rewriting or forking technical content |
+| Multi-Format Delivery | Zensical for HTML, a Python export script for Word, and headless LibreOffice for PDF | Teams serve web and portable-document readers without maintaining three competing sources |
+| Self-Documentation | Implementation notes, a complete build chapter, contributor guidance, and links to the actual configuration and scripts | Another writer can inspect, explain, reproduce, or adapt the workflow without undocumented setup knowledge |
 
 See [How This Repository Works](about/how-it-works.md) for a closer look at the implementation and benefit of each feature.
 

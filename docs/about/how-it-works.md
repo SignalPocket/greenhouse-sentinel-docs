@@ -49,7 +49,7 @@ The product pages include labeled **Feature in action** notes beside representat
 
 The repeated fields make these examples a semantic table: each row identifies a feature, its implementation, and its practical value.
 
-| Feature | Made with | Why it helps |
+| Feature | Made With | Why It Helps |
 | --- | --- | --- |
 | Cross-Reference | A deliberate `decision-states` anchor plus validation of the source file and fragment | Important links survive nearby heading edits, and broken targets stop the release |
 | Descriptive Link | Task-specific link text plus a validator that rejects common context-free labels | Readers and screen-reader users can understand the destination out of context |

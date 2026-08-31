@@ -59,6 +59,48 @@ def repeat_table_header(row):
     tr_pr.append(header)
 
 
+def set_cell_margins(cell, top=90, start=120, bottom=90, end=120):
+    """Add readable padding around table-cell content."""
+    tc_pr = cell._tc.get_or_add_tcPr()
+    tc_mar = tc_pr.first_child_found_in("w:tcMar")
+    if tc_mar is None:
+        tc_mar = OxmlElement("w:tcMar")
+        tc_pr.append(tc_mar)
+    for edge, value in (("top", top), ("start", start), ("bottom", bottom), ("end", end)):
+        node = tc_mar.find(qn(f"w:{edge}"))
+        if node is None:
+            node = OxmlElement(f"w:{edge}")
+            tc_mar.append(node)
+        node.set(qn("w:w"), str(value))
+        node.set(qn("w:type"), "dxa")
+
+
+def table_column_widths(headers):
+    """Use practical widths for the demonstration tables."""
+    normalized = tuple(value.lower() for value in headers)
+    if normalized == ("feature", "made with", "why it helps"):
+        return (1.45, 2.55, 2.5)
+    if normalized == ("state", "example condition", "operator expectation"):
+        return (1.0, 2.8, 2.7)
+    return tuple(6.5 / len(headers) for _ in headers)
+
+
+def format_callout(paragraph):
+    """Give exported admonitions visible separation from surrounding prose."""
+    p_pr = paragraph._p.get_or_add_pPr()
+    shading = OxmlElement("w:shd")
+    shading.set(qn("w:fill"), "E8F2F0")
+    p_pr.append(shading)
+    borders = OxmlElement("w:pBdr")
+    left = OxmlElement("w:left")
+    left.set(qn("w:val"), "single")
+    left.set(qn("w:sz"), "18")
+    left.set(qn("w:space"), "8")
+    left.set(qn("w:color"), "B45309")
+    borders.append(left)
+    p_pr.append(borders)
+
+
 def add_field(paragraph, instruction, fallback="1"):
     """Add a Word field with visible fallback text for headless renderers."""
     begin = OxmlElement("w:fldChar")
@@ -118,6 +160,8 @@ def add_page(doc, path):
     in_code = False
     table_lines = []
     in_numbered_list = False
+    admonition_title = None
+    add_space_before_next = False
     for raw in lines:
         line = raw.rstrip()
         if line.startswith("```"):
@@ -135,21 +179,32 @@ def add_page(doc, path):
             rows = [[c.strip() for c in r.strip("|").split("|")] for r in table_lines]
             if len(rows) > 2:
                 table = doc.add_table(rows=1, cols=len(rows[0])); table.autofit = False
+                widths = table_column_widths(rows[0])
                 for i, value in enumerate(rows[0]):
                     table.rows[0].cells[i].text = value; shade(table.rows[0].cells[i], "075E54")
                     for run in table.rows[0].cells[i].paragraphs[0].runs: run.font.color.rgb = RGBColor(255,255,255); run.bold = True
                 repeat_table_header(table.rows[0])
                 for values in rows[2:]:
                     cells = table.add_row().cells
-                    for i, value in enumerate(values): cells[i].text = value
+                    for i, value in enumerate(values):
+                        cells[i].text = ""
+                        add_inline(cells[i].paragraphs[0], value)
                 for row in table.rows:
-                    for cell in row.cells:
-                        cell.width = Inches(6.5 / len(row.cells))
+                    for i, cell in enumerate(row.cells):
+                        cell.width = Inches(widths[i])
+                        set_cell_margins(cell)
                         for paragraph in cell.paragraphs:
                             paragraph.paragraph_format.line_spacing = 1.15
-                            paragraph.paragraph_format.space_after = Pt(2)
+                            paragraph.paragraph_format.space_after = Pt(0)
+                add_space_before_next = True
             table_lines = []
-        if not line or line.startswith("!!!"):
+        if not line:
+            in_numbered_list = False
+            continue
+        if line.startswith("!!!"):
+            match = re.match(r'^!!!\s+(\w+)(?:\s+"([^"]+)")?', line)
+            kind = match.group(1).title() if match else "Note"
+            admonition_title = match.group(2) if match and match.group(2) else kind
             in_numbered_list = False
             continue
         heading = re.match(r"^(#{1,6})\s+(.+)$", line)
@@ -157,21 +212,41 @@ def add_page(doc, path):
             in_numbered_list = False
             level = min(len(heading.group(1)), 3)
             if level == 1 and len(doc.paragraphs) > 4: doc.add_page_break()
-            doc.add_heading(heading.group(2), level=level)
+            p = doc.add_heading(heading.group(2), level=level)
         elif re.match(r"^\d+\.\s+", line):
             p = doc.add_paragraph(style="List Number"); add_inline(p, re.sub(r"^\d+\.\s+", "", line))
             p.paragraph_format.left_indent = Inches(0.4)
             p.paragraph_format.first_line_indent = Inches(-0.25)
             if not in_numbered_list: restart_numbering(doc, p)
             in_numbered_list = True
+        elif line.startswith("- [ ] "):
+            in_numbered_list = False
+            p = doc.add_paragraph(style="Checklist")
+            marker = p.add_run("[ ] ")
+            marker.bold = True
+            marker.font.color.rgb = TEXT
+            marker.underline = False
+            add_inline(p, line[6:])
         elif line.startswith("- "):
             in_numbered_list = False
             p = doc.add_paragraph(style="List Bullet"); add_inline(p, line[2:])
         elif line.startswith("[!") or line.startswith("<"):
             continue
+        elif admonition_title is not None:
+            in_numbered_list = False
+            p = doc.add_paragraph(style="Callout")
+            label = p.add_run(f"{admonition_title}. ")
+            label.bold = True
+            label.font.color.rgb = PRIMARY
+            add_inline(p, line)
+            format_callout(p)
+            admonition_title = None
         else:
             in_numbered_list = False
             p = doc.add_paragraph(); add_inline(p, line)
+        if add_space_before_next:
+            p.paragraph_format.space_before = Pt(8)
+            add_space_before_next = False
 
 
 def build():
@@ -190,6 +265,13 @@ def build():
     for name in ("List Bullet", "List Number"):
         style = styles[name]; set_font(style, BODY_FONT, 10.5); style.font.color.rgb = TEXT
         style.paragraph_format.line_spacing = 1.15; style.paragraph_format.space_after = Pt(2)
+    checklist = styles.add_style("Checklist", WD_STYLE_TYPE.PARAGRAPH); set_font(checklist, BODY_FONT, 10.5)
+    checklist.font.color.rgb = TEXT; checklist.font.underline = False
+    checklist.paragraph_format.left_indent = Inches(0.35); checklist.paragraph_format.first_line_indent = Inches(-0.25)
+    checklist.paragraph_format.line_spacing = 1.15; checklist.paragraph_format.space_after = Pt(3)
+    callout = styles.add_style("Callout", WD_STYLE_TYPE.PARAGRAPH); set_font(callout, BODY_FONT, 10)
+    callout.font.color.rgb = TEXT; callout.paragraph_format.left_indent = Inches(0.2); callout.paragraph_format.right_indent = Inches(0.12)
+    callout.paragraph_format.space_before = Pt(8); callout.paragraph_format.space_after = Pt(9); callout.paragraph_format.line_spacing = 1.15
     footer_style = styles["Footer"]; set_font(footer_style, BODY_FONT, 9); footer_style.font.color.rgb = TEXT
     code = styles.add_style("Code", WD_STYLE_TYPE.PARAGRAPH); set_font(code, MONO_FONT, 8.5)
     code.paragraph_format.left_indent = Inches(0.2); code.paragraph_format.space_after = Pt(2)
