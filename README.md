@@ -24,7 +24,7 @@ The documentation also explains itself. Start with **[How this repository works]
 | Deterministic validation | `scripts/validate_docs.py` |
 | Automated CI and artifact generation | `.github/workflows/docs.yml` |
 | Accessibility-minded authoring | `docs/contributing/accessibility.md`, semantic source, visible focus styles |
-| Replaceable brand layer | `docs/assets/stylesheets/brand.css` and design tokens |
+| Replaceable brand layer | `docs/assets/stylesheets/brand-2026.css` and design tokens |
 | Word and PDF outputs | `deliverables/` and `scripts/export_handbook.py` |
 
 ## Architecture
@@ -73,7 +73,7 @@ Zensical 0.0.23 currently warns that strict mode is unsupported. The command is 
 
 ## Make it match another brand
 
-Change the color, typography, radius, and spacing tokens at the top of `docs/assets/stylesheets/brand.css`. Replace `docs/assets/images/mark.svg`. Then update the site name and copyright notice in `zensical.toml`. The Markdown does not need to change. See the [branding guide](docs/about/branding.md).
+Change the color, typography, radius, and spacing tokens at the top of `docs/assets/stylesheets/brand-2026.css`. Replace `docs/assets/images/mark.svg`. Then update the site name and copyright notice in `zensical.toml`. The Markdown does not need to change. See the [branding guide](docs/about/branding.md).
 
 ## Content model
 

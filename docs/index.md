@@ -1,13 +1,19 @@
-# Greenhouse Sentinel
+# Greenhouse Sentinel documentation demo
 
 **A fictional product with real documentation engineering behind it.**
 
-Greenhouse Sentinel is a small controller that watches three environmental signals and recommends a response before plants are stressed. This site documents the fictional controller and, just as importantly, the docs-as-code system that publishes this site.
+This is a public, self-documenting portfolio sample by [Katie Kearns](https://github.com/SignalPocket). Greenhouse Sentinel is a small fictional controller that watches three environmental signals and recommends a response before plants are stressed. Its limited scope makes the product documentation quick to understand while leaving enough structure to demonstrate a production-minded docs-as-code workflow.
 
 <div class="hero-actions" markdown>
 [Start the product tour](product/quickstart.md){ .md-button .md-button--primary }
 [See how the repo works](about/how-it-works.md){ .md-button }
 </div>
+
+## Why this demo exists
+
+This site is both a technical-writing sample and a reusable reference implementation. It shows how a documentation team can keep content reviewable in Git, publish a searchable site, customize presentation without rewriting source, detect broken navigation and cross-references, and generate portable Word and PDF deliverables.
+
+Everything needed to evaluate the sample is documented on this site. The public [GitHub repository](https://github.com/SignalPocket/greenhouse-sentinel-docs) provides the source and commit history for reviewers who want to inspect the implementation.
 
 ## One source, several useful outputs
 
@@ -38,6 +44,22 @@ The Word and PDF files are not separately maintained copies. When an approved Ma
 
 See [How this repository works](about/how-it-works.md) for an inspectable example of each feature.
 
+## Architecture at a glance
+
+```text
+One reviewed Markdown source
+          |
+          +--> validation --> pull-request and release gates
+          |
+          +--> Zensical --> searchable HTML site
+          |
+          +--> export script --> Word handbook --> PDF handbook
+
+Brand tokens change presentation without changing source meaning.
+```
+
+The renderer can change while the release requirements remain stable. Explicit navigation, valid links and anchors, accessible structure, reproducible builds, and reviewable changes remain required.
+
 ## The fictional product in 30 seconds
 
 Greenhouse Sentinel samples temperature, humidity, and soil moisture every 60 seconds. A rule engine assigns the greenhouse a state: **normal**, **watch**, or **act**. The operator dashboard explains the reading and links each alert to a documented response.
@@ -45,8 +67,15 @@ Greenhouse Sentinel samples temperature, humidity, and soil moisture every 60 se
 !!! note "Portfolio disclosure"
     Greenhouse Sentinel does not exist. Its behavior, data, and interface are intentionally simple and invented. The repository exists to demonstrate documentation architecture, authoring, validation, CI, publishing, and multi-format delivery without confidential information.
 
-## Explore both layers
+## What is included
 
-- Use the [quick start](product/quickstart.md) and [operating guide](product/operations.md) as if you were evaluating product documentation.
-- Read [How this repository works](about/how-it-works.md) to inspect the mechanics behind the site.
-- Review the [accessibility standard](contributing/accessibility.md) and [release checklist](contributing/release-checklist.md) to see how quality becomes part of the workflow.
+- **Product documentation** proves the workflow can support task-based technical content. Start with the [quick start](product/quickstart.md), [operating guide](product/operations.md), and [architecture](product/architecture.md).
+- **Repository documentation** reveals how the example is assembled and governed. Read [How this repository works](about/how-it-works.md) and [Build it from scratch](about/build-from-scratch.md).
+- **Contributor guidance** makes quality expectations explicit and repeatable. Review the [writing guide](contributing/writing-guide.md), [accessibility standard](contributing/accessibility.md), and [release checklist](contributing/release-checklist.md).
+- **Generated deliverables** prove that one reviewed source can support several channels. Use the Word and PDF download buttons above to inspect the portable versions.
+
+## Public portfolio scope
+
+All product names, specifications, incidents, commands, and workflows in this demonstration are invented. The repository contains no Peraton-specific, customer, proprietary, export-controlled, or classified information. “ThreatBoard-style” describes the general docs-as-code pattern demonstrated by this sample, not copied content or branding.
+
+Katie Kearns created this sample as a technical-writing and documentation-systems portfolio project. The code and documentation are available under the [MIT License](https://github.com/SignalPocket/greenhouse-sentinel-docs/blob/main/LICENSE).

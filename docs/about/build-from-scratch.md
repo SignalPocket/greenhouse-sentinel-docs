@@ -73,7 +73,7 @@ Fail when navigation names a missing file, a maintained page is omitted, a file 
 
 ## 8. Add replaceable branding
 
-Create `docs/assets/stylesheets/brand.css` with purpose-based tokens for primary, accent, surface, text, focus, and radius values. Add a compact accessible SVG mark. Use the tokens for visible focus, mobile button stacking, readable line lengths, and reduced-motion behavior. Do not place brand decisions in Markdown.
+Create `docs/assets/stylesheets/brand-2026.css` with purpose-based tokens for primary, accent, surface, text, focus, and radius values. Add a compact accessible SVG mark. Use the tokens for visible focus, mobile button stacking, readable line lengths, and reduced-motion behavior. Do not place brand decisions in Markdown.
 
 ## 9. Generate Word from reviewed source
 

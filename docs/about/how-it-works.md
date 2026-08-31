@@ -58,7 +58,7 @@ The product pages include labeled **Feature in action** notes beside representat
 
 ## Separate content from presentation
 
-`docs/assets/stylesheets/brand.css` defines brand tokens and a small set of presentation rules. `docs/assets/images/mark.svg` contains the fictional mark. A new organization can replace the visual layer without editing product meaning. Try the [branding exercise](branding.md#five-minute-rebrand).
+`docs/assets/stylesheets/brand-2026.css` defines brand tokens and a small set of presentation rules. `docs/assets/images/mark.svg` contains the fictional mark. A new organization can replace the visual layer without editing product meaning. Try the [branding exercise](branding.md#five-minute-rebrand).
 
 ## Validate before rendering
 
