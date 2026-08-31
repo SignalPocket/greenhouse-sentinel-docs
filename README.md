@@ -4,6 +4,8 @@
 
 A public, self-documenting demonstration of a production-minded docs-as-code workflow by [Katie Kearns](https://github.com/SignalPocket). The subject is fictional; the workflow is real.
 
+**Live documentation:** [signalpocket.github.io/greenhouse-sentinel-docs](https://signalpocket.github.io/greenhouse-sentinel-docs/)
+
 Greenhouse Sentinel is a tiny fictional controller that monitors temperature, humidity, and soil moisture in a community greenhouse. Its limited scope makes the documentation quick to understand while leaving enough structure to demonstrate authoring, review, validation, publishing, and multi-format delivery.
 
 ## Why this repository exists
