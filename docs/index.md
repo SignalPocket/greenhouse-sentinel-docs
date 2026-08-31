@@ -11,7 +11,32 @@ Greenhouse Sentinel is a small controller that watches three environmental signa
 
 ## One source, several useful outputs
 
-Authors write accessible Markdown. Automated checks verify navigation, internal links, anchors, and basic authoring rules. Zensical turns the reviewed source into this searchable site, and the export job creates Word and PDF versions for readers who need portable files.
+Authors maintain one set of accessible Markdown files. Automated checks verify navigation, internal links, anchors, and basic authoring rules. The publishing workflow then generates three outputs from that same reviewed source:
+
+1. this searchable Zensical site
+2. a Microsoft Word handbook
+3. a PDF handbook
+
+The Word and PDF files are not separately maintained copies. When an approved Markdown change is merged, automation rebuilds all three outputs together.
+
+<div class="hero-actions" markdown>
+[Download the Word handbook](https://signalpocket.github.io/greenhouse-sentinel-docs/downloads/greenhouse-sentinel-handbook.docx){ .md-button }
+[Download the PDF handbook](https://signalpocket.github.io/greenhouse-sentinel-docs/downloads/greenhouse-sentinel-handbook.pdf){ .md-button }
+</div>
+
+## What this repository demonstrates
+
+- **Single-source authoring:** maintain content once in Markdown and generate the website, Word handbook, and PDF handbook together.
+- **Explicit navigation:** control page order and grouping in `zensical.toml` instead of relying on filenames.
+- **Stable cross-references:** use deliberate anchors for important targets, as shown by [Decision states](product/architecture.md#decision-states).
+- **Automated validation:** detect missing navigation entries, files, internal links, anchors, headings, and image text before publication.
+- **Continuous integration and publishing:** run the same checks and builds for pull requests, then deploy approved changes through GitHub Actions.
+- **Accessible authoring:** apply standards for headings, descriptive links, alternative text, tables, keyboard focus, readable sizing, zoom, and reduced motion.
+- **Replaceable branding:** change logos, colors, typography, and presentation rules without rewriting the Markdown source.
+- **Multi-format delivery:** publish searchable HTML plus downloadable Word and PDF files for different reading needs.
+- **Self-documentation:** explain the architecture, authoring process, automation, construction steps, and release checks inside the artifact itself.
+
+See [How this repository works](about/how-it-works.md) for an inspectable example of each feature.
 
 ## The fictional product in 30 seconds
 
@@ -25,4 +50,3 @@ Greenhouse Sentinel samples temperature, humidity, and soil moisture every 60 se
 - Use the [quick start](product/quickstart.md) and [operating guide](product/operations.md) as if you were evaluating product documentation.
 - Read [How this repository works](about/how-it-works.md) to inspect the mechanics behind the site.
 - Review the [accessibility standard](contributing/accessibility.md) and [release checklist](contributing/release-checklist.md) to see how quality becomes part of the workflow.
-

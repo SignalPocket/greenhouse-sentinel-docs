@@ -37,11 +37,18 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends libreoffice-writer
           libreoffice --headless --convert-to pdf --outdir deliverables deliverables/greenhouse-sentinel-handbook.docx
+      - name: Add handbooks to the published site
+        run: |
+          mkdir -p site/downloads
+          cp deliverables/greenhouse-sentinel-handbook.docx site/downloads/
+          cp deliverables/greenhouse-sentinel-handbook.pdf site/downloads/
       - name: Check generated artifacts
         run: |
           test -s deliverables/greenhouse-sentinel-handbook.docx
           test -s deliverables/greenhouse-sentinel-handbook.pdf
           test -s site/index.html
+          test -s site/downloads/greenhouse-sentinel-handbook.docx
+          test -s site/downloads/greenhouse-sentinel-handbook.pdf
       - uses: actions/upload-artifact@v4
         with:
           name: greenhouse-sentinel-docs

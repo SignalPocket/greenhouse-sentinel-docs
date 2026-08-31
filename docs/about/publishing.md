@@ -20,7 +20,14 @@ The export script reads the explicit navigation list so portable outputs follow 
 python scripts/export_handbook.py
 ```
 
-CI uses LibreOffice to convert the generated Word file to PDF. Both files are checked for existence and plausible size before they are uploaded as build artifacts.
+CI uses LibreOffice to convert the generated Word file to PDF. Both files are checked for existence and plausible size before publication.
+
+The website, Word handbook, and PDF handbook are three presentations of the same reviewed Markdown source. Authors do not update any of them separately. After an approved Markdown change is merged, the workflow rebuilds the site, generates Word, converts Word to PDF, verifies all three outputs, and publishes them together.
+
+<div class="hero-actions" markdown>
+[Download the Word handbook](https://signalpocket.github.io/greenhouse-sentinel-docs/downloads/greenhouse-sentinel-handbook.docx){ .md-button }
+[Download the PDF handbook](https://signalpocket.github.io/greenhouse-sentinel-docs/downloads/greenhouse-sentinel-handbook.pdf){ .md-button }
+</div>
 
 ## Renderer-independent gates
 
