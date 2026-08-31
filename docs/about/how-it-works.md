@@ -47,18 +47,20 @@ The product pages include labeled **Feature in action** notes beside representat
 
 ## See Each Authoring Feature Work
 
-Each example below identifies what readers can inspect, how the feature is produced, and why the implementation is useful.
+The repeated fields make these examples a semantic table: each row identifies a feature, its implementation, and its practical value.
 
-- **Cross-Reference.** **Made with:** the operating guide links to `architecture.md#decision-states`, where a deliberate anchor marks the target. The validator resolves both the file and fragment. **Why it helps:** the link remains dependable when nearby headings are edited, and a failed target stops the release instead of surprising a reader.
-- **Descriptive Link.** **Made with:** the quick start names the troubleshooting symptom in the link text, and the validator rejects common context-free labels. **Why it helps:** readers, screen-reader users, and reviewers know the destination without having to reconstruct the surrounding sentence.
-- **Semantic Table.** **Made with:** the architecture page uses Markdown table syntax for repeated state, condition, and expectation fields. Zensical creates accessible HTML, and the export script creates a real Word table with a repeating header row. **Why it helps:** the relationship stays clear in the browser, Word, and PDF without maintaining format-specific tables.
-- **Admonition.** **Made with:** a labeled `!!! info` block in Markdown and theme styling in the publishing layer. **Why it helps:** important context stands out visually while retaining a readable text label and simple source that reviewers can understand.
-- **Code Block.** **Made with:** fenced Markdown blocks, copy support in the site theme, and an explicit monospaced export style. **Why it helps:** commands and sample output preserve spacing across formats and are easier to copy without transcription errors.
-- **Explicit Navigation.** **Made with:** the ordered `nav` list in `zensical.toml` and validation that detects missing targets and maintained pages left out of navigation. **Why it helps:** information architecture is intentional, reviewable, and traceable instead of depending on filenames or renderer guesses.
-- **Brand Tokens.** **Made with:** purpose-based CSS variables and a separate logo asset outside the Markdown source. **Why it helps:** a team can rebrand the site quickly and consistently without risking changes to the technical meaning or portable documents.
-- **Automated Validation.** **Made with:** a renderer-independent Python script that inspects navigation, headings, images, local files, links, and anchors before the build. **Why it helps:** repeatable checks finish quickly, free reviewers for judgment-heavy work, and leave an objective pass-or-fail record with each change.
-- **Continuous Integration.** **Made with:** `.github/workflows/docs.yml`, which runs the same validation and publishing sequence for pull requests and accepted changes. **Why it helps:** the workflow catches environment-specific failures, proves which version was tested, and creates a traceable release history.
-- **Multi-Format Publishing.** **Made with:** one navigation order, Zensical for the site, `scripts/export_handbook.py` for Word, and headless LibreOffice for PDF. **Why it helps:** the website, Word handbook, and PDF stay synchronized while authors maintain only one source.
+| Feature | Made with | Why it helps |
+| --- | --- | --- |
+| Cross-Reference | A deliberate `decision-states` anchor plus validation of the source file and fragment | Important links survive nearby heading edits, and broken targets stop the release |
+| Descriptive Link | Task-specific link text plus a validator that rejects common context-free labels | Readers and screen-reader users can understand the destination out of context |
+| Semantic Table | Markdown table syntax, accessible HTML, and real Word tables with repeating header rows | Relationships remain clear in HTML, Word, and PDF without separate copies |
+| Admonition | A labeled `!!! info` block plus styling in the publishing layer | Important context stands out while the source stays readable and reviewable |
+| Code Block | Fenced Markdown, site copy support, and an explicit monospaced export style | Commands retain spacing and can be copied with fewer transcription errors |
+| Explicit Navigation | The ordered `nav` list in `zensical.toml` plus checks for missing and unlisted pages | Page order is intentional, reviewable, and traceable instead of inferred from filenames |
+| Brand Tokens | Purpose-based CSS variables and a separate logo asset outside the Markdown | Teams can rebrand consistently without changing technical meaning |
+| Automated Validation | A renderer-independent Python script that checks navigation, structure, images, files, links, and anchors | Fast, repeatable checks free reviewers for judgment-heavy work and leave pass-or-fail evidence |
+| Continuous Integration | `.github/workflows/docs.yml`, which repeats validation and publishing for proposed and accepted changes | The workflow catches environment failures and records exactly which version passed |
+| Multi-Format Publishing | One navigation order, Zensical for HTML, a Python Word export, and LibreOffice PDF conversion | The website, Word handbook, and PDF stay synchronized from one maintained source |
 
 ## Separate Content from Presentation
 
