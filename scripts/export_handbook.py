@@ -22,6 +22,16 @@ OUT = ROOT / "deliverables" / "greenhouse-sentinel-handbook.docx"
 PRIMARY = RGBColor(7, 94, 84)
 ACCENT = RGBColor(180, 83, 9)
 TEXT = RGBColor(22, 48, 43)
+BODY_FONT = "Carlito"
+MONO_FONT = "DejaVu Sans Mono"
+
+
+def set_font(style, name, size=None):
+    """Set a font name consistently for Word and LibreOffice renderers."""
+    style.font.name = name
+    style._element.rPr.rFonts.set(qn("w:eastAsia"), name)
+    if size is not None:
+        style.font.size = Pt(size)
 
 
 def flatten_nav(items):
@@ -92,7 +102,8 @@ def add_inline(paragraph, text):
         if not part:
             continue
         if part.startswith("`"):
-            run = paragraph.add_run(part[1:-1]); run.font.name = "Consolas"
+            run = paragraph.add_run(part[1:-1]); run.font.name = MONO_FONT
+            run._element.rPr.rFonts.set(qn("w:eastAsia"), MONO_FONT)
         elif part.startswith("**"):
             run = paragraph.add_run(part[2:-2]); run.bold = True
         elif part.startswith("["):
@@ -132,7 +143,11 @@ def add_page(doc, path):
                     cells = table.add_row().cells
                     for i, value in enumerate(values): cells[i].text = value
                 for row in table.rows:
-                    for cell in row.cells: cell.width = Inches(6.5 / len(row.cells))
+                    for cell in row.cells:
+                        cell.width = Inches(6.5 / len(row.cells))
+                        for paragraph in cell.paragraphs:
+                            paragraph.paragraph_format.line_spacing = 1.15
+                            paragraph.paragraph_format.space_after = Pt(2)
             table_lines = []
         if not line or line.startswith("!!!"):
             in_numbered_list = False
@@ -166,12 +181,17 @@ def build():
     section.top_margin = section.bottom_margin = Inches(0.8)
     section.left_margin = section.right_margin = Inches(0.9)
     styles = doc.styles
-    normal = styles["Normal"]; normal.font.name = "Aptos"; normal.font.size = Pt(10.5); normal.font.color.rgb = TEXT
-    normal.paragraph_format.space_after = Pt(7); normal.paragraph_format.line_spacing = 1.15
+    normal = styles["Normal"]; set_font(normal, BODY_FONT, 10.5); normal.font.color.rgb = TEXT
+    normal.paragraph_format.space_after = Pt(7); normal.paragraph_format.line_spacing = 1.18
     for name, size in (("Title", 30), ("Heading 1", 21), ("Heading 2", 15), ("Heading 3", 12)):
-        style = styles[name]; style.font.name = "Aptos Display"; style.font.size = Pt(size); style.font.bold = True; style.font.color.rgb = PRIMARY
+        style = styles[name]; set_font(style, BODY_FONT, size); style.font.bold = True; style.font.color.rgb = PRIMARY
+        style.paragraph_format.line_spacing = 1.05
         style.paragraph_format.space_before = Pt(12); style.paragraph_format.space_after = Pt(6); style.paragraph_format.keep_with_next = True
-    code = styles.add_style("Code", WD_STYLE_TYPE.PARAGRAPH); code.font.name = "Consolas"; code.font.size = Pt(8.5)
+    for name in ("List Bullet", "List Number"):
+        style = styles[name]; set_font(style, BODY_FONT, 10.5); style.font.color.rgb = TEXT
+        style.paragraph_format.line_spacing = 1.15; style.paragraph_format.space_after = Pt(2)
+    footer_style = styles["Footer"]; set_font(footer_style, BODY_FONT, 9); footer_style.font.color.rgb = TEXT
+    code = styles.add_style("Code", WD_STYLE_TYPE.PARAGRAPH); set_font(code, MONO_FONT, 8.5)
     code.paragraph_format.left_indent = Inches(0.2); code.paragraph_format.space_after = Pt(2)
 
     title = doc.add_paragraph(style="Title"); title.add_run("Greenhouse Sentinel")

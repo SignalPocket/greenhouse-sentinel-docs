@@ -35,7 +35,8 @@ jobs:
       - name: Generate PDF handbook
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends libreoffice-writer
+          sudo apt-get install -y --no-install-recommends libreoffice-writer fonts-crosextra-carlito fonts-dejavu-core
+          fc-match Carlito | grep -qi Carlito
           libreoffice --headless --convert-to pdf --outdir deliverables deliverables/greenhouse-sentinel-handbook.docx
       - name: Add handbooks to the published site
         run: |
