@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Greenhouse Sentinel</title>
+  <desc id="desc">A leaf inside a simple greenhouse outline</desc>
+  <rect width="64" height="64" rx="14" fill="#075e54"/>
+  <path d="M14 31 32 14l18 17v21H14Z" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M22 42c10 1 18-5 20-16-11 0-19 5-20 16Zm2-1c5-4 9-7 16-12" fill="none" stroke="#fbbf24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+

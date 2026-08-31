@@ -1,0 +1,72 @@
+[project]
+site_name = "Greenhouse Sentinel"
+site_description = "A self-documenting docs-as-code portfolio demo"
+site_author = "Katie Kearns"
+site_url = "https://signalpocket.github.io/greenhouse-sentinel-docs/"
+repo_url = "https://github.com/SignalPocket/greenhouse-sentinel-docs"
+repo_name = "SignalPocket/greenhouse-sentinel-docs"
+copyright = "Copyright © 2026 Katie Kearns · Fictional product, real workflow"
+
+nav = [
+  { "Overview" = "index.md" },
+  { "Product guide" = [
+    { "Quick start" = "product/quickstart.md" },
+    { "Operating guide" = "product/operations.md" },
+    { "Architecture" = "product/architecture.md" },
+    { "Troubleshooting" = "product/troubleshooting.md" },
+  ] },
+  { "How this repository works" = [
+    { "Workflow tour" = "about/how-it-works.md" },
+    { "Build it from scratch" = "about/build-from-scratch.md" },
+    { "Branding" = "about/branding.md" },
+    { "Publishing" = "about/publishing.md" },
+  ] },
+  { "Contribute" = [
+    { "Writing guide" = "contributing/writing-guide.md" },
+    { "Accessibility" = "contributing/accessibility.md" },
+    { "Release checklist" = "contributing/release-checklist.md" },
+  ] },
+]
+
+[project.theme]
+language = "en"
+logo = "assets/images/mark.svg"
+favicon = "assets/images/mark.svg"
+features = [
+  "navigation.footer",
+  "navigation.indexes",
+  "navigation.sections",
+  "navigation.top",
+  "search.highlight",
+  "search.suggest",
+  "content.code.copy",
+]
+
+[[project.theme.palette]]
+scheme = "default"
+primary = "teal"
+accent = "green"
+toggle.icon = "material/brightness-7"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+scheme = "slate"
+primary = "teal"
+accent = "green"
+toggle.icon = "material/brightness-4"
+toggle.name = "Switch to light mode"
+
+[project.extra]
+generator = false
+
+[project.extra_css]
+files = ["assets/stylesheets/brand.css"]
+
+[project.markdown_extensions]
+admonition = {}
+attr_list = {}
+md_in_html = {}
+toc.permalink = true
+pymdownx.details = {}
+pymdownx.superfences = {}
+pymdownx.highlight.anchor_linenums = true

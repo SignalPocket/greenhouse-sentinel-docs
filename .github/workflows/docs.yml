@@ -1,0 +1,46 @@
+name: Docs checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-build-export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Validate source
+        run: python scripts/validate_docs.py
+      - name: Build site in strict mode
+        run: zensical build --strict
+      - name: Generate Word handbook
+        run: python scripts/export_handbook.py
+      - name: Generate PDF handbook
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libreoffice-writer
+          libreoffice --headless --convert-to pdf --outdir deliverables deliverables/greenhouse-sentinel-handbook.docx
+      - name: Check generated artifacts
+        run: |
+          test -s deliverables/greenhouse-sentinel-handbook.docx
+          test -s deliverables/greenhouse-sentinel-handbook.pdf
+          test -s site/index.html
+      - uses: actions/upload-artifact@v4
+        with:
+          name: greenhouse-sentinel-docs
+          path: |
+            site/
+            deliverables/*.docx
+            deliverables/*.pdf
+
