@@ -1,4 +1,4 @@
-# Greenhouse Sentinel documentation demo
+# Greenhouse Sentinel Documentation Demo
 
 [![Docs checks](https://github.com/SignalPocket/greenhouse-sentinel-docs/actions/workflows/docs.yml/badge.svg)](https://github.com/SignalPocket/greenhouse-sentinel-docs/actions/workflows/docs.yml)
 
@@ -8,13 +8,13 @@ A public, self-documenting demonstration of a production-minded docs-as-code wor
 
 Greenhouse Sentinel is a tiny fictional controller that monitors temperature, humidity, and soil moisture in a community greenhouse. Its limited scope makes the documentation quick to understand while leaving enough structure to demonstrate authoring, review, validation, publishing, and multi-format delivery.
 
-## Why this repository exists
+## Why This Repository Exists
 
 This repository is a portfolio artifact and reference implementation. It shows how a documentation team can keep content reviewable in Git, publish a searchable site, customize presentation without rewriting source, detect broken navigation and cross-references, and generate portable Word and PDF deliverables.
 
 The documentation also explains itself. Start with **[How this repository works](docs/about/how-it-works.md)** to see each capability mapped to the file that implements it, then follow **[Build it from scratch](docs/about/build-from-scratch.md)** for the complete construction sequence.
 
-## What it demonstrates
+## What It Demonstrates
 
 | Capability | Where to inspect it |
 | --- | --- |
@@ -43,7 +43,7 @@ Brand tokens affect presentation, not source meaning.
 
 The renderer can change. The quality requirements do not. Explicit navigation, valid links and anchors, accessible structure, reproducible builds, and reviewable changes remain release gates.
 
-## Build locally
+## Build Locally
 
 Requires Python 3.11 or newer.
 
@@ -71,18 +71,18 @@ The script creates `deliverables/greenhouse-sentinel-handbook.docx`. PDF convers
 
 Zensical 0.0.23 currently warns that strict mode is unsupported. The command is retained so the repository adopts strict behavior when the renderer supports it. `scripts/validate_docs.py` is the enforceable, renderer-independent quality gate today.
 
-## Make it match another brand
+## Make It Match Another Brand
 
 Change the color, typography, radius, and spacing tokens at the top of `docs/assets/stylesheets/brand-2026.css`. Replace `docs/assets/images/mark.svg`. Then update the site name and copyright notice in `zensical.toml`. The Markdown does not need to change. See the [branding guide](docs/about/branding.md).
 
-## Content model
+## Content Model
 
 - **Product documentation** proves that the workflow supports real technical content.
 - **Repository documentation** reveals how the example is assembled and governed.
 - **Contributor guidance** makes quality expectations explicit and repeatable.
 - **Generated deliverables** show that one reviewed source can support more than one channel.
 
-## Scope and disclosure
+## Scope and Disclosure
 
 All names, specifications, incidents, commands, and workflows in the product documentation are invented for this demo. The repository contains no Peraton-specific, customer, proprietary, export-controlled, or classified information. “ThreatBoard-style” describes the general docs-as-code pattern requested for this portfolio sample, not copied content or branding.
 

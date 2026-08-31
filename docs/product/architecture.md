@@ -3,7 +3,7 @@
 Greenhouse Sentinel separates measurement, evaluation, presentation, and response guidance so each part can be tested and explained independently.
 
 <a id="system-boundary"></a>
-## System boundary
+## System Boundary
 
 The hub receives local sensor readings and produces a recommendation. It does not operate pumps, vents, heaters, locks, or other physical equipment. A person remains responsible for any physical action.
 
@@ -21,7 +21,7 @@ Sensors -> sample normalizer -> rule engine -> local event store -> dashboard
 - **Dashboard:** presents current conditions, recent trends, and the reason for the current state.
 
 <a id="decision-states"></a>
-## Decision states
+## Decision States
 
 The engine assigns one of three states after three consecutive samples meet the same condition.
 
@@ -37,10 +37,10 @@ The engine assigns one of three states after three consecutive samples meet the 
 The three-sample rule reduces noise without hiding sustained change. Thresholds in this demo are illustrative, not horticultural advice.
 
 <a id="data-retention"></a>
-## Data retention
+## Data Retention
 
 The hub stores 30 days of samples and event history. An export contains timestamps, normalized readings, state transitions, acknowledgements, and the rule-set version. It does not contain names unless an operator voluntarily enters one in a note.
 
-## Failure behavior
+## Failure Behavior
 
 If one sensor becomes stale, the dashboard reports **sensor unavailable** and does not infer a replacement value. The last valid measurement remains visible with its timestamp. See [Troubleshooting](troubleshooting.md#a-sensor-reports-no-data).

@@ -10,22 +10,22 @@ extra_css = ["assets/stylesheets/brand-2026.css"]
 
 nav = [
   { "Overview" = "index.md" },
-  { "Product guide" = [
-    { "Quick start" = "product/quickstart.md" },
-    { "Operating guide" = "product/operations.md" },
+  { "Product Guide" = [
+    { "Quick Start" = "product/quickstart.md" },
+    { "Operating Guide" = "product/operations.md" },
     { "Architecture" = "product/architecture.md" },
     { "Troubleshooting" = "product/troubleshooting.md" },
   ] },
-  { "How this repository works" = [
-    { "Workflow tour" = "about/how-it-works.md" },
-    { "Build it from scratch" = "about/build-from-scratch.md" },
+  { "How This Repository Works" = [
+    { "Workflow Tour" = "about/how-it-works.md" },
+    { "Build It from Scratch" = "about/build-from-scratch.md" },
     { "Branding" = "about/branding.md" },
     { "Publishing" = "about/publishing.md" },
   ] },
   { "Contribute" = [
-    { "Writing guide" = "contributing/writing-guide.md" },
+    { "Writing Guide" = "contributing/writing-guide.md" },
     { "Accessibility" = "contributing/accessibility.md" },
-    { "Release checklist" = "contributing/release-checklist.md" },
+    { "Release Checklist" = "contributing/release-checklist.md" },
   ] },
 ]
 

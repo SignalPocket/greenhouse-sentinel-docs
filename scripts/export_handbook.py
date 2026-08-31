@@ -41,6 +41,27 @@ def shade(cell, fill):
     cell._tc.get_or_add_tcPr().append(shd)
 
 
+def add_field(paragraph, instruction, fallback="1"):
+    """Add a Word field with visible fallback text for headless renderers."""
+    begin = OxmlElement("w:fldChar")
+    begin.set(qn("w:fldCharType"), "begin")
+    paragraph.add_run()._r.append(begin)
+
+    code = OxmlElement("w:instrText")
+    code.set(qn("xml:space"), "preserve")
+    code.text = f" {instruction} "
+    paragraph.add_run()._r.append(code)
+
+    separate = OxmlElement("w:fldChar")
+    separate.set(qn("w:fldCharType"), "separate")
+    paragraph.add_run()._r.append(separate)
+    paragraph.add_run(fallback)
+
+    end = OxmlElement("w:fldChar")
+    end.set(qn("w:fldCharType"), "end")
+    paragraph.add_run()._r.append(end)
+
+
 def restart_numbering(doc, paragraph):
     """Give a numbered-list block its own sequence beginning at 1."""
     numbering = doc.part.numbering_part.element
@@ -144,14 +165,19 @@ def build():
 
     title = doc.add_paragraph(style="Title"); title.add_run("Greenhouse Sentinel")
     subtitle = doc.add_paragraph(); subtitle.alignment = WD_ALIGN_PARAGRAPH.LEFT
-    run = subtitle.add_run("Product handbook and docs-as-code portfolio demonstration"); run.font.size = Pt(15); run.font.color.rgb = ACCENT
+    run = subtitle.add_run("Product Handbook and Docs-as-Code Portfolio Demonstration"); run.font.size = Pt(15); run.font.color.rgb = ACCENT
     doc.add_paragraph("Fictional product · Real documentation workflow · Katie Kearns · 2026")
     doc.add_paragraph("This public sample contains no customer, proprietary, export-controlled, or classified information.")
     footer = section.footer.paragraphs[0]; footer.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    footer.add_run("Greenhouse Sentinel · Portfolio demonstration · Katie Kearns")
+    footer.add_run("Greenhouse Sentinel · Portfolio demonstration · Katie Kearns · Page ")
+    add_field(footer, "PAGE")
+    footer.add_run(" of ")
+    add_field(footer, "NUMPAGES")
+    update_fields = OxmlElement("w:updateFields"); update_fields.set(qn("w:val"), "true")
+    doc.settings._element.append(update_fields)
     for rel in flatten_nav(config["project"]["nav"]): add_page(doc, DOCS / rel)
     OUT.parent.mkdir(exist_ok=True)
-    doc.core_properties.title = "Greenhouse Sentinel handbook"
+    doc.core_properties.title = "Greenhouse Sentinel Handbook"
     doc.core_properties.author = "Katie Kearns"
     doc.core_properties.subject = "Public docs-as-code portfolio demonstration"
     doc.save(OUT)

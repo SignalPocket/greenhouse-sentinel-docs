@@ -14,7 +14,7 @@ Version 0.0.23 currently warns that strict mode is unsupported. The command is r
 
 ## Word and PDF
 
-The export script reads the explicit navigation list so portable outputs follow the same order as the site. It applies a restrained document style, real heading levels, a running footer, and link text that remains understandable outside the site.
+The export script reads the explicit navigation list so portable outputs follow the same order as the site. It applies a restrained document style, real heading levels, descriptive link text, and a running footer with dynamic **Page X of Y** fields. LibreOffice preserves those page numbers when it creates the PDF.
 
 ```bash
 python scripts/export_handbook.py
@@ -29,6 +29,6 @@ The website, Word handbook, and PDF handbook are three presentations of the same
 [Download the PDF handbook](https://signalpocket.github.io/greenhouse-sentinel-docs/downloads/greenhouse-sentinel-handbook.pdf){ .md-button }
 </div>
 
-## Renderer-independent gates
+## Renderer-Independent Gates
 
 A replacement renderer is acceptable only if the release continues to verify navigation completeness, target files, anchors, accessible structure, responsive layout, and portable outputs. Tool choice can evolve. The acceptance criteria stay explicit.

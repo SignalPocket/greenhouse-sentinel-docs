@@ -1,14 +1,14 @@
-# How this repository works
+# How This Repository Works
 
 This page is the guided tour of the artifact you are reading. Every feature points to a real, inspectable implementation in the repository.
 
 For the complete construction sequence, continue with [Build it from scratch](build-from-scratch.md).
 
-## Author once in Markdown
+## Author Once in Markdown
 
 All maintained content lives under `docs/`. Product guides and repository guidance use the same lightweight syntax, review process, and validation rules. Each page has one level-one heading. Sections follow a logical hierarchy. Relative links keep the content portable between source review and rendered output.
 
-## Follow one authoring process
+## Follow One Authoring Process
 
 An author works with the Markdown source rather than editing the generated site, Word file, or PDF.
 
@@ -22,7 +22,7 @@ An author works with the Markdown source rather than editing the generated site,
 
 The Markdown commit is the maintained record. The website, Word handbook, and PDF are outputs of that record.
 
-## Divide human and automated work
+## Divide Human and Automated Work
 
 | Human judgment | Automated work |
 | --- | --- |
@@ -35,17 +35,17 @@ The Markdown commit is the maintained record. The website, Word handbook, and PD
 
 Automation handles repeatable questions with objective answers. Authors and reviewers remain responsible for accuracy, usefulness, safety, and clarity.
 
-## Control the information architecture
+## Control the Information Architecture
 
 `zensical.toml` contains an explicit `nav` list. This makes the intended order and grouping reviewable instead of relying on a renderer to infer structure from filenames. The validation script also fails when a Markdown page is missing from navigation.
 
-## Keep cross-references stable
+## Keep Cross-References Stable
 
 High-value targets use deliberate HTML anchors such as `decision-states` in the [architecture guide](../product/architecture.md#decision-states). `scripts/validate_docs.py` resolves every internal Markdown link and fragment before publication. Changing a heading can no longer silently strand an important link.
 
 The product pages include labeled **Feature in action** notes beside representative examples. These notes expose the implementation without interrupting the primary task for readers who only need the fictional product instructions.
 
-## See each authoring feature work
+## See Each Authoring Feature Work
 
 - **Cross-reference:** the operating guide links to `architecture.md#decision-states`. The explicit anchor is stable and validated.
 - **Descriptive link:** the quick start names the troubleshooting symptom, which stays meaningful outside its surrounding sentence.
@@ -56,11 +56,11 @@ The product pages include labeled **Feature in action** notes beside representat
 - **Brand tokens:** CSS variables change presentation globally while Markdown meaning and portable outputs remain intact.
 - **Multi-format publishing:** the export script reads the same navigation order as the site, so the handbook is not a separately maintained copy.
 
-## Separate content from presentation
+## Separate Content from Presentation
 
 `docs/assets/stylesheets/brand-2026.css` defines brand tokens and a small set of presentation rules. `docs/assets/images/mark.svg` contains the fictional mark. A new organization can replace the visual layer without editing product meaning. Try the [branding exercise](branding.md#five-minute-rebrand).
 
-## Validate before rendering
+## Validate Before Rendering
 
 `scripts/validate_docs.py` checks:
 
@@ -73,18 +73,18 @@ The product pages include labeled **Feature in action** notes beside representat
 
 `zensical build --strict` requests the renderer's strict behavior. Zensical 0.0.23 currently reports that strict mode is unsupported, so the custom validator is the enforceable gate today. It is deliberately independent of the renderer so core quality checks remain if the publishing engine changes.
 
-## Build and review automatically
+## Build and Review Automatically
 
 `.github/workflows/docs.yml` runs validation, builds the Zensical site in strict mode, generates Word output, converts it to PDF, performs basic artifact checks, and uploads the results for review. Pull requests get the same gates as the default branch.
 
-## Publish several channels
+## Publish Several Channels
 
-Zensical creates the searchable HTML experience. `scripts/export_handbook.py` assembles the same maintained Markdown into a styled Word handbook. CI converts that Word file to PDF. These are publishing transformations, not separate authoring silos.
+Zensical creates the searchable HTML experience. `scripts/export_handbook.py` assembles the same maintained Markdown into a styled Word handbook with a **Page X of Y** footer. CI converts that Word file to PDF and preserves the footer numbers. These are publishing transformations, not separate authoring silos.
 
-## Treat accessibility as an authoring constraint
+## Treat Accessibility as an Authoring Constraint
 
 The [accessibility standard](../contributing/accessibility.md) covers heading order, descriptive links, alternative text, tables, keyboard focus, zoom, contrast, and reduced motion. CSS enhances focus visibility and avoids essential animation.
 
-## Release with evidence
+## Release with Evidence
 
 The [release checklist](../contributing/release-checklist.md) joins automated checks with human review: wording, task completeness, responsive behavior, keyboard use, zoom, and generated-file inspection.

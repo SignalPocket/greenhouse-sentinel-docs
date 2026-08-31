@@ -2,7 +2,7 @@
 
 Accessibility is part of authoring and release, not a cleanup pass after publication.
 
-## Authoring standard
+## Authoring Standard
 
 - Use a logical heading hierarchy and one clear page title.
 - Write descriptive link text that makes sense in a list of links.
@@ -11,7 +11,7 @@ Accessibility is part of authoring and release, not a cleanup pass after publica
 - Do not use color as the only way to communicate state.
 - Keep instructions independent of visual position such as “the green button on the right.”
 
-## Rendered-site checks
+## Rendered-Site Checks
 
 - Navigate every interactive control with a keyboard and confirm focus is visible.
 - Verify the skip link reaches the main content.
@@ -20,6 +20,6 @@ Accessibility is part of authoring and release, not a cleanup pass after publica
 - At every width, confirm the page has no horizontal overflow.
 - Respect `prefers-reduced-motion`. Do not require animation to understand content.
 
-## Portable-output checks
+## Portable-Output Checks
 
 Inspect every generated Word and PDF page for clipped text, broken tables, poor page breaks, missing glyphs, and unclear link text. Confirm Word uses real heading styles so readers can navigate by structure.

@@ -1,9 +1,9 @@
-# Operating guide
+# Operating Guide
 
 The operating routine is designed for a volunteer who checks the greenhouse at opening and closing.
 
 <a id="daily-check"></a>
-## Daily check
+## Daily Check
 
 1. Confirm the dashboard timestamp is less than two minutes old.
 2. Review the current state and its explanation.
@@ -11,7 +11,7 @@ The operating routine is designed for a volunteer who checks the greenhouse at o
 4. Acknowledge any completed response.
 5. Record an observation only when local conditions differ from the sensor data.
 
-## Respond to a state
+## Respond to a State
 
 ### Normal
 
@@ -25,7 +25,7 @@ Inspect the greenhouse within 30 minutes. Confirm the sensor is unobstructed and
 
 Follow the response displayed with the alert. Ventilate for high temperature, inspect irrigation for low soil moisture, or check airflow for sustained high humidity. Never bypass a physical safety control.
 
-## Acknowledge an alert
+## Acknowledge an Alert
 
 Acknowledgement records that a person saw the alert. It does not change the sensor reading or decision state. Add a short note that states what you observed and what you did.
 

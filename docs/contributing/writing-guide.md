@@ -1,4 +1,4 @@
-# Writing guide
+# Writing Guide
 
 Write for the person completing a task, then make the implementation easy to review.
 
@@ -18,7 +18,7 @@ Write for the person completing a task, then make the implementation easy to rev
 - Avoid “click here,” “read more,” and other links that lose meaning out of context.
 - Label fictional values and limitations honestly.
 
-## Cross-references
+## Cross-References
 
 Use relative Markdown paths and include the stable fragment when linking to a section:
 
@@ -28,7 +28,7 @@ Use relative Markdown paths and include the stable fragment when linking to a se
 
 Run `python scripts/validate_docs.py` before opening a pull request.
 
-## Authoring workflow
+## Authoring Workflow
 
 1. Identify the reader goal and confirm the product information.
 2. Edit Markdown under `docs/`. Treat the website, Word handbook, and PDF as generated outputs.

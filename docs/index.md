@@ -1,4 +1,4 @@
-# Greenhouse Sentinel documentation demo
+# Greenhouse Sentinel Documentation Demo
 
 **A fictional product with real documentation engineering behind it.**
 
@@ -9,13 +9,13 @@ This is a public, self-documenting portfolio sample by [Katie Kearns](https://gi
 [See how the repo works](about/how-it-works.md){ .md-button }
 </div>
 
-## Why this demo exists
+## Why This Demo Exists
 
 This site is both a technical-writing sample and a reusable reference implementation. It shows how a documentation team can keep content reviewable in Git, publish a searchable site, customize presentation without rewriting source, detect broken navigation and cross-references, and generate portable Word and PDF deliverables.
 
 Everything needed to evaluate the sample is documented on this site. The public [GitHub repository](https://github.com/SignalPocket/greenhouse-sentinel-docs) provides the source and commit history for reviewers who want to inspect the implementation.
 
-## One source, several useful outputs
+## One Source, Several Useful Outputs
 
 Authors maintain one set of accessible Markdown files. Automated checks verify navigation, internal links, anchors, and basic authoring rules. The publishing workflow then generates three outputs from that same reviewed source:
 
@@ -30,7 +30,7 @@ The Word and PDF files are not separately maintained copies. When an approved Ma
 [Download the PDF handbook](https://signalpocket.github.io/greenhouse-sentinel-docs/downloads/greenhouse-sentinel-handbook.pdf){ .md-button }
 </div>
 
-## What this repository demonstrates
+## What This Repository Demonstrates
 
 - **Single-source authoring:** maintain content once in Markdown and generate the website, Word handbook, and PDF handbook together.
 - **Explicit navigation:** control page order and grouping in `zensical.toml` instead of relying on filenames.
@@ -44,7 +44,7 @@ The Word and PDF files are not separately maintained copies. When an approved Ma
 
 See [How this repository works](about/how-it-works.md) for an inspectable example of each feature.
 
-## Architecture at a glance
+## Architecture at a Glance
 
 ```text
 One reviewed Markdown source
@@ -60,21 +60,21 @@ Brand tokens change presentation without changing source meaning.
 
 The renderer can change while the release requirements remain stable. Explicit navigation, valid links and anchors, accessible structure, reproducible builds, and reviewable changes remain required.
 
-## The fictional product in 30 seconds
+## The Fictional Product in 30 Seconds
 
 Greenhouse Sentinel samples temperature, humidity, and soil moisture every 60 seconds. A rule engine assigns the greenhouse a state: **normal**, **watch**, or **act**. The operator dashboard explains the reading and links each alert to a documented response.
 
 !!! note "Portfolio disclosure"
     Greenhouse Sentinel does not exist. Its behavior, data, and interface are intentionally simple and invented. The repository exists to demonstrate documentation architecture, authoring, validation, CI, publishing, and multi-format delivery without confidential information.
 
-## What is included
+## What Is Included
 
 - **Product documentation** proves the workflow can support task-based technical content. Start with the [quick start](product/quickstart.md), [operating guide](product/operations.md), and [architecture](product/architecture.md).
 - **Repository documentation** reveals how the example is assembled and governed. Read [How this repository works](about/how-it-works.md) and [Build it from scratch](about/build-from-scratch.md).
 - **Contributor guidance** makes quality expectations explicit and repeatable. Review the [writing guide](contributing/writing-guide.md), [accessibility standard](contributing/accessibility.md), and [release checklist](contributing/release-checklist.md).
 - **Generated deliverables** prove that one reviewed source can support several channels. Use the Word and PDF download buttons above to inspect the portable versions.
 
-## Public portfolio scope
+## Public Portfolio Scope
 
 All product names, specifications, incidents, commands, and workflows in this demonstration are invented. The repository contains no Peraton-specific, customer, proprietary, export-controlled, or classified information. “ThreatBoard-style” describes the general docs-as-code pattern demonstrated by this sample, not copied content or branding.
 
