@@ -60,7 +60,7 @@ toggle.name = "Switch to light mode"
 generator = false
 
 [project.extra_css]
-files = ["assets/stylesheets/brand.css"]
+files = ["assets/stylesheets/brand-2026.css"]
 
 [project.markdown_extensions]
 admonition = {}
