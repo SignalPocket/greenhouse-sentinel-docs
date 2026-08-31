@@ -32,7 +32,7 @@ The engine assigns one of three states after three consecutive samples meet the 
 | Act | One reading exceeds a threshold | Follow the displayed response |
 
 !!! info "Feature in action: portable table"
-    This is a semantic Markdown table because the content has repeated, comparable fields. Zensical renders it responsively; the export script maps it to a real Word table with a header row. Ordinary explanatory prose remains outside tables for readability and accessibility.
+    This is a semantic Markdown table because the content has repeated, comparable fields. Zensical renders it responsively. The export script maps it to a real Word table with a header row. Ordinary explanatory prose remains outside tables for readability and accessibility.
 
 The three-sample rule reduces noise without hiding sustained change. Thresholds in this demo are illustrative, not horticultural advice.
 

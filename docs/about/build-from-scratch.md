@@ -81,11 +81,24 @@ Create `scripts/export_handbook.py`. Read the same navigation list as the site a
 
 ## 10. Generate PDF
 
-In CI, convert the Word handbook with headless LibreOffice. Check that Word and PDF files exist and are non-empty. Render every page to images for visual review; inspect for clipping, overlap, broken tables, awkward breaks, missing glyphs, headers, and footers.
+In CI, convert the Word handbook with headless LibreOffice. Check that Word and PDF files exist and are non-empty. Render every page to images for visual review. Inspect the pages for clipping, overlap, broken tables, awkward breaks, missing glyphs, and misplaced page furniture.
 
 ## 11. Automate the workflow
 
-Create `.github/workflows/docs.yml` for pushes, pull requests, and manual runs. The job checks out the repo, installs pinned dependencies, runs independent validation, requests a strict Zensical build, generates Word and PDF, checks artifacts, and uploads the site plus portable files for review.
+Create `.github/workflows/docs.yml` for pushes, pull requests, and manual runs. The workflow automates the mechanical publishing sequence:
+
+1. Check out the exact Git commit under review.
+2. Install the dependency versions pinned by the repository.
+3. Run `scripts/validate_docs.py` against the Markdown and navigation configuration.
+4. Build the complete Zensical site from the reviewed source.
+5. Run `scripts/export_handbook.py` to assemble the Markdown pages in explicit navigation order.
+6. Create the Word handbook with real heading, list, table, and document styles.
+7. Convert the Word handbook to PDF with headless LibreOffice.
+8. Confirm that the site, Word file, and PDF exist and are non-empty.
+9. Upload the site and portable files as reviewable build artifacts.
+10. On the `main` branch, upload the site to GitHub Pages and deploy the live URL.
+
+The workflow does not decide whether an explanation is correct or whether a procedure is useful. Those decisions remain with the author and reviewers. Automation answers repeatable questions such as whether a target exists, whether the build succeeds, and whether all expected outputs were produced.
 
 Zensical 0.0.23 currently warns that strict mode is unsupported. Retain the flag for forward compatibility, but make the independent validator the enforceable gate.
 
@@ -107,4 +120,31 @@ After publication, add a small portfolio entry that links to this repository and
 
 ## 16. Update and release
 
-For every change: edit the isolated source or presentation layer, add new pages to navigation, validate, build, regenerate portable outputs, complete proportional editorial/accessibility/responsive QA, open a focused pull request, and merge only after CI and review pass.
+The normal authoring cycle is smaller than the initial repository setup.
+
+### Author the change
+
+1. Start with a reader problem or a verified product change.
+2. Edit the relevant Markdown under `docs/`. Do not edit `site/`, Word, or PDF because those files are generated outputs.
+3. Add a new page to `zensical.toml` when the change introduces a new topic.
+4. Add or update relative links and stable anchors when other pages depend on the content.
+5. Keep branding changes in the stylesheet, logo asset, or publishing configuration.
+
+### Check the change locally
+
+1. Run `python scripts/validate_docs.py`.
+2. Build or serve the Zensical site.
+3. Read the rendered page in context, not only the source diff.
+4. Regenerate Word and PDF when the change affects portable output.
+5. Complete editorial, accessibility, responsive, and generated-file review in proportion to the risk of the change.
+
+### Review and publish
+
+1. Commit only the intended source and configuration changes.
+2. Open a focused pull request that explains the reader need and the checks performed.
+3. Let CI repeat validation and generate review artifacts from a clean environment.
+4. Have the appropriate people review technical meaning, writing quality, accessibility, and presentation.
+5. Merge only after the automated gates and human review pass.
+6. Let the `main`-branch workflow rebuild every output and deploy GitHub Pages.
+
+This creates a simple ownership boundary. People author and approve meaning. The repository automates validation, transformation, packaging, and deployment.

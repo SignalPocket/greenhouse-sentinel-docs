@@ -1,6 +1,6 @@
 # Quick start
 
-This walkthrough connects a fictional Sentinel hub and confirms that its three sensors are reporting. No hardware is required; the commands are illustrative.
+This walkthrough connects a fictional Sentinel hub and confirms that its three sensors are reporting. No hardware is required. The commands are illustrative.
 
 ## Before you begin
 

@@ -24,4 +24,4 @@ CI uses LibreOffice to convert the generated Word file to PDF. Both files are ch
 
 ## Renderer-independent gates
 
-A replacement renderer is acceptable only if the release continues to verify navigation completeness, target files, anchors, accessible structure, responsive layout, and portable outputs. Tool choice can evolve; the acceptance criteria stay explicit.
+A replacement renderer is acceptable only if the release continues to verify navigation completeness, target files, anchors, accessible structure, responsive layout, and portable outputs. Tool choice can evolve. The acceptance criteria stay explicit.

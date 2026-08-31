@@ -2,7 +2,7 @@
 
 [![Docs checks](https://github.com/SignalPocket/greenhouse-sentinel-docs/actions/workflows/docs.yml/badge.svg)](https://github.com/SignalPocket/greenhouse-sentinel-docs/actions/workflows/docs.yml)
 
-A public, self-documenting demonstration of a production-minded docs-as-code workflow by [Katie Kearns](https://github.com/SignalPocket). The subject is fictional; the workflow is real.
+A public, self-documenting demonstration of a production-minded docs-as-code workflow by [Katie Kearns](https://github.com/SignalPocket). The subject is fictional. The workflow is real.
 
 **Live documentation:** [signalpocket.github.io/greenhouse-sentinel-docs](https://signalpocket.github.io/greenhouse-sentinel-docs/)
 
@@ -41,7 +41,7 @@ Markdown source + configuration
 Brand tokens affect presentation, not source meaning.
 ```
 
-The renderer can change; the quality requirements do not. Explicit navigation, valid links and anchors, accessible structure, reproducible builds, and reviewable changes remain release gates.
+The renderer can change. The quality requirements do not. Explicit navigation, valid links and anchors, accessible structure, reproducible builds, and reviewable changes remain release gates.
 
 ## Build locally
 
@@ -69,11 +69,11 @@ python scripts/export_handbook.py
 
 The script creates `deliverables/greenhouse-sentinel-handbook.docx`. PDF conversion is performed in CI with LibreOffice when available.
 
-Zensical 0.0.23 currently warns that strict mode is unsupported. The command is retained so the repository adopts strict behavior when the renderer supports it; `scripts/validate_docs.py` is the enforceable, renderer-independent quality gate today.
+Zensical 0.0.23 currently warns that strict mode is unsupported. The command is retained so the repository adopts strict behavior when the renderer supports it. `scripts/validate_docs.py` is the enforceable, renderer-independent quality gate today.
 
 ## Make it match another brand
 
-Change the color, typography, radius, and spacing tokens at the top of `docs/assets/stylesheets/brand.css`; replace `docs/assets/images/mark.svg`; then update the site name and copyright notice in `zensical.toml`. The Markdown does not need to change. See the [branding guide](docs/about/branding.md).
+Change the color, typography, radius, and spacing tokens at the top of `docs/assets/stylesheets/brand.css`. Replace `docs/assets/images/mark.svg`. Then update the site name and copyright notice in `zensical.toml`. The Markdown does not need to change. See the [branding guide](docs/about/branding.md).
 
 ## Content model
 
