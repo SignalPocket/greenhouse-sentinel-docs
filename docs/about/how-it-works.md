@@ -2,7 +2,7 @@
 
 This page is the guided tour of the artifact you are reading. Every feature points to a real, inspectable implementation in the repository.
 
-For the complete construction sequence, continue with [Build it from scratch](build-from-scratch.md).
+For the complete construction sequence, continue with [Build It from Scratch](build-from-scratch.md).
 
 ## Author Once in Markdown
 
@@ -47,14 +47,18 @@ The product pages include labeled **Feature in action** notes beside representat
 
 ## See Each Authoring Feature Work
 
-- **Cross-reference:** the operating guide links to `architecture.md#decision-states`. The explicit anchor is stable and validated.
-- **Descriptive link:** the quick start names the troubleshooting symptom, which stays meaningful outside its surrounding sentence.
-- **Semantic table:** the architecture page uses a table only for repeated state, condition, and expectation fields. Exports preserve the header relationship.
-- **Admonition:** `!!! info` creates a visually distinct note while retaining a text label and readable source.
-- **Code block:** fenced blocks preserve commands and sample output. The site adds copy support, and the Word export applies a monospaced style.
-- **Explicit navigation:** `zensical.toml` controls order and labels. The validator detects both missing targets and unlisted pages.
-- **Brand tokens:** CSS variables change presentation globally while Markdown meaning and portable outputs remain intact.
-- **Multi-format publishing:** the export script reads the same navigation order as the site, so the handbook is not a separately maintained copy.
+Each example below identifies what readers can inspect, how the feature is produced, and why the implementation is useful.
+
+- **Cross-Reference.** **Made with:** the operating guide links to `architecture.md#decision-states`, where a deliberate anchor marks the target. The validator resolves both the file and fragment. **Why it helps:** the link remains dependable when nearby headings are edited, and a failed target stops the release instead of surprising a reader.
+- **Descriptive Link.** **Made with:** the quick start names the troubleshooting symptom in the link text, and the validator rejects common context-free labels. **Why it helps:** readers, screen-reader users, and reviewers know the destination without having to reconstruct the surrounding sentence.
+- **Semantic Table.** **Made with:** the architecture page uses Markdown table syntax for repeated state, condition, and expectation fields. Zensical creates accessible HTML, and the export script creates a real Word table with a repeating header row. **Why it helps:** the relationship stays clear in the browser, Word, and PDF without maintaining format-specific tables.
+- **Admonition.** **Made with:** a labeled `!!! info` block in Markdown and theme styling in the publishing layer. **Why it helps:** important context stands out visually while retaining a readable text label and simple source that reviewers can understand.
+- **Code Block.** **Made with:** fenced Markdown blocks, copy support in the site theme, and an explicit monospaced export style. **Why it helps:** commands and sample output preserve spacing across formats and are easier to copy without transcription errors.
+- **Explicit Navigation.** **Made with:** the ordered `nav` list in `zensical.toml` and validation that detects missing targets and maintained pages left out of navigation. **Why it helps:** information architecture is intentional, reviewable, and traceable instead of depending on filenames or renderer guesses.
+- **Brand Tokens.** **Made with:** purpose-based CSS variables and a separate logo asset outside the Markdown source. **Why it helps:** a team can rebrand the site quickly and consistently without risking changes to the technical meaning or portable documents.
+- **Automated Validation.** **Made with:** a renderer-independent Python script that inspects navigation, headings, images, local files, links, and anchors before the build. **Why it helps:** repeatable checks finish quickly, free reviewers for judgment-heavy work, and leave an objective pass-or-fail record with each change.
+- **Continuous Integration.** **Made with:** `.github/workflows/docs.yml`, which runs the same validation and publishing sequence for pull requests and accepted changes. **Why it helps:** the workflow catches environment-specific failures, proves which version was tested, and creates a traceable release history.
+- **Multi-Format Publishing.** **Made with:** one navigation order, Zensical for the site, `scripts/export_handbook.py` for Word, and headless LibreOffice for PDF. **Why it helps:** the website, Word handbook, and PDF stay synchronized while authors maintain only one source.
 
 ## Separate Content from Presentation
 

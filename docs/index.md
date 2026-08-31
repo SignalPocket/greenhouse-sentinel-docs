@@ -5,8 +5,8 @@
 This is a public, self-documenting portfolio sample by [Katie Kearns](https://github.com/SignalPocket). Greenhouse Sentinel is a small fictional controller that watches three environmental signals and recommends a response before plants are stressed. Its limited scope makes the product documentation quick to understand while leaving enough structure to demonstrate a production-minded docs-as-code workflow.
 
 <div class="hero-actions" markdown>
-[Start the product tour](product/quickstart.md){ .md-button .md-button--primary }
-[See how the repo works](about/how-it-works.md){ .md-button }
+[Start the Product Tour](product/quickstart.md){ .md-button .md-button--primary }
+[See How the Repo Works](about/how-it-works.md){ .md-button }
 </div>
 
 ## Why This Demo Exists
@@ -32,17 +32,19 @@ The Word and PDF files are not separately maintained copies. When an approved Ma
 
 ## What This Repository Demonstrates
 
-- **Single-source authoring:** maintain content once in Markdown and generate the website, Word handbook, and PDF handbook together.
-- **Explicit navigation:** control page order and grouping in `zensical.toml` instead of relying on filenames.
-- **Stable cross-references:** use deliberate anchors for important targets, as shown by [Decision states](product/architecture.md#decision-states).
-- **Automated validation:** detect missing navigation entries, files, internal links, anchors, headings, and image text before publication.
-- **Continuous integration and publishing:** run the same checks and builds for pull requests, then deploy approved changes through GitHub Actions.
-- **Accessible authoring:** apply standards for headings, descriptive links, alternative text, tables, keyboard focus, readable sizing, zoom, and reduced motion.
-- **Replaceable branding:** change logos, colors, typography, and presentation rules without rewriting the Markdown source.
-- **Multi-format delivery:** publish searchable HTML plus downloadable Word and PDF files for different reading needs.
-- **Self-documentation:** explain the architecture, authoring process, automation, construction steps, and release checks inside the artifact itself.
+Each feature is implemented in the public repository, not merely described in the portfolio narrative.
 
-See [How this repository works](about/how-it-works.md) for an inspectable example of each feature.
+- **Single-Source Authoring.** **Made with:** one reviewed set of Markdown files under `docs/`. **Why it helps:** authors make a change once instead of reconciling separate website, Word, and PDF copies.
+- **Explicit Navigation.** **Made with:** an ordered `nav` list in `zensical.toml` plus a check for unlisted pages. **Why it helps:** readers get a deliberate sequence, and reviewers can trace every published page to the configuration that includes it.
+- **Stable Cross-References.** **Made with:** deliberate anchors on important targets, as shown by [Decision States](product/architecture.md#decision-states), and automated fragment checks. **Why it helps:** heading edits cannot silently strand important links.
+- **Automated Validation.** **Made with:** `scripts/validate_docs.py`, which checks navigation, files, internal links, anchors, heading structure, and image text. **Why it helps:** routine defects are found in seconds and resolved before publication rather than during manual review.
+- **Continuous Integration and Publishing.** **Made with:** a GitHub Actions workflow that repeats validation and generation from a clean copy of each proposed change. **Why it helps:** every release follows the same recorded process, which improves consistency, accuracy, and traceability.
+- **Accessible Authoring.** **Made with:** source standards, validation rules, accessible theme overrides, and a release checklist. **Why it helps:** accessibility is addressed while content is written and reviewed instead of being treated as a late repair.
+- **Replaceable Branding.** **Made with:** CSS variables, a separate logo asset, and publishing configuration outside the Markdown. **Why it helps:** an organization can change the visual identity without rewriting or forking the technical content.
+- **Multi-Format Delivery.** **Made with:** Zensical for HTML, a Python export script for Word, and headless LibreOffice for PDF. **Why it helps:** teams serve web and portable-document readers without maintaining three competing sources.
+- **Self-Documentation.** **Made with:** implementation notes, a complete build chapter, contributor guidance, and links to the actual configuration and scripts. **Why it helps:** another writer can inspect, explain, reproduce, or adapt the workflow without relying on undocumented setup knowledge.
+
+See [How This Repository Works](about/how-it-works.md) for a closer look at the implementation and benefit of each feature.
 
 ## Architecture at a Glance
 
@@ -70,7 +72,7 @@ Greenhouse Sentinel samples temperature, humidity, and soil moisture every 60 se
 ## What Is Included
 
 - **Product documentation** proves the workflow can support task-based technical content. Start with the [quick start](product/quickstart.md), [operating guide](product/operations.md), and [architecture](product/architecture.md).
-- **Repository documentation** reveals how the example is assembled and governed. Read [How this repository works](about/how-it-works.md) and [Build it from scratch](about/build-from-scratch.md).
+- **Repository documentation** reveals how the example is assembled and governed. Read [How This Repository Works](about/how-it-works.md) and [Build It from Scratch](about/build-from-scratch.md).
 - **Contributor guidance** makes quality expectations explicit and repeatable. Review the [writing guide](contributing/writing-guide.md), [accessibility standard](contributing/accessibility.md), and [release checklist](contributing/release-checklist.md).
 - **Generated deliverables** prove that one reviewed source can support several channels. Use the Word and PDF download buttons above to inspect the portable versions.
 
