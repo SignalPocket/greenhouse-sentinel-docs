@@ -41,6 +41,7 @@ def shade(cell, fill):
 
 
 def add_inline(paragraph, text):
+    text = re.sub(r"\{\s*\.md-button[^}]*\}", "", text).strip()
     parts = re.split(r"(`[^`]+`|\*\*[^*]+\*\*|\[[^]]+\]\([^)]+\))", text)
     for part in parts:
         if not part:
@@ -123,8 +124,6 @@ def build():
     run = subtitle.add_run("Product handbook and docs-as-code portfolio demonstration"); run.font.size = Pt(15); run.font.color.rgb = ACCENT
     doc.add_paragraph("Fictional product · Real documentation workflow · Katie Kearns · 2026")
     doc.add_paragraph("This public sample contains no customer, proprietary, export-controlled, or classified information.")
-    doc.add_page_break()
-
     footer = section.footer.paragraphs[0]; footer.alignment = WD_ALIGN_PARAGRAPH.CENTER
     footer.add_run("Greenhouse Sentinel · Portfolio demonstration · Katie Kearns")
     for rel in flatten_nav(config["project"]["nav"]): add_page(doc, DOCS / rel)
@@ -137,4 +136,3 @@ def build():
 
 
 if __name__ == "__main__": build()
-
