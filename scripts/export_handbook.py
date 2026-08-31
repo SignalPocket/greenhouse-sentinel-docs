@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import re
 import tomllib
+from copy import deepcopy
 from pathlib import Path
 
 from docx import Document
@@ -40,6 +41,21 @@ def shade(cell, fill):
     cell._tc.get_or_add_tcPr().append(shd)
 
 
+def restart_numbering(doc, paragraph):
+    """Give a numbered-list block its own sequence beginning at 1."""
+    numbering = doc.part.numbering_part.element
+    base = next(node for node in numbering.findall(qn("w:num")) if node.get(qn("w:numId")) == "5")
+    new_num = deepcopy(base)
+    new_id = max(int(node.get(qn("w:numId"))) for node in numbering.findall(qn("w:num"))) + 1
+    new_num.set(qn("w:numId"), str(new_id))
+    override = OxmlElement("w:lvlOverride"); override.set(qn("w:ilvl"), "0")
+    start = OxmlElement("w:startOverride"); start.set(qn("w:val"), "1"); override.append(start); new_num.append(override)
+    numbering.append(new_num)
+    num_pr = paragraph._p.get_or_add_pPr().get_or_add_numPr()
+    ilvl = OxmlElement("w:ilvl"); ilvl.set(qn("w:val"), "0"); num_pr.append(ilvl)
+    num_id = OxmlElement("w:numId"); num_id.set(qn("w:val"), str(new_id)); num_pr.append(num_id)
+
+
 def add_inline(paragraph, text):
     text = re.sub(r"\{\s*\.md-button[^}]*\}", "", text).strip()
     parts = re.split(r"(`[^`]+`|\*\*[^*]+\*\*|\[[^]]+\]\([^)]+\))", text)
@@ -61,6 +77,7 @@ def add_page(doc, path):
     lines = path.read_text(encoding="utf-8").splitlines()
     in_code = False
     table_lines = []
+    in_numbered_list = False
     for raw in lines:
         line = raw.rstrip()
         if line.startswith("```"):
@@ -88,19 +105,25 @@ def add_page(doc, path):
                     for cell in row.cells: cell.width = Inches(6.5 / len(row.cells))
             table_lines = []
         if not line or line.startswith("!!!"):
+            in_numbered_list = False
             continue
         heading = re.match(r"^(#{1,6})\s+(.+)$", line)
         if heading:
+            in_numbered_list = False
             level = min(len(heading.group(1)), 3)
             if level == 1 and len(doc.paragraphs) > 4: doc.add_page_break()
             doc.add_heading(heading.group(2), level=level)
         elif re.match(r"^\d+\.\s+", line):
             p = doc.add_paragraph(style="List Number"); add_inline(p, re.sub(r"^\d+\.\s+", "", line))
+            if not in_numbered_list: restart_numbering(doc, p)
+            in_numbered_list = True
         elif line.startswith("- "):
+            in_numbered_list = False
             p = doc.add_paragraph(style="List Bullet"); add_inline(p, line[2:])
         elif line.startswith("[!") or line.startswith("<"):
             continue
         else:
+            in_numbered_list = False
             p = doc.add_paragraph(); add_inline(p, line)
 
 
