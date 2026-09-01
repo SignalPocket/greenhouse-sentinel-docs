@@ -17,7 +17,7 @@ Everything needed to evaluate the sample is documented on this site. The public 
 
 ## One Source, Several Useful Outputs
 
-Authors maintain one set of accessible Markdown files. Automated checks verify navigation, internal links, anchors, and basic authoring rules. The publishing workflow then generates three outputs from that same reviewed source:
+Authors maintain one set of accessible Markdown files. Automated checks verify navigation, internal links, anchors, and basic authoring rules. The publishing workflow then generates three documentation outputs from that same reviewed source:
 
 1. this searchable Zensical site
 2. a Microsoft Word handbook
@@ -25,9 +25,12 @@ Authors maintain one set of accessible Markdown files. Automated checks verify n
 
 The Word and PDF files are not separately maintained copies. When an approved Markdown change is merged, automation rebuilds all three outputs together.
 
+Jay's training book references selected sections from the same Markdown and adds a small amount of training-only material. A generator turns that book into a PowerPoint deck, so reused product content stays aligned without making the `.pptx` another source to maintain.
+
 <div class="hero-actions" markdown>
 [Download the Word handbook](https://signalpocket.github.io/greenhouse-sentinel-docs/downloads/greenhouse-sentinel-handbook.docx){ .md-button }
 [Download the PDF handbook](https://signalpocket.github.io/greenhouse-sentinel-docs/downloads/greenhouse-sentinel-handbook.pdf){ .md-button }
+[Download the training PowerPoint](https://signalpocket.github.io/greenhouse-sentinel-docs/downloads/jays-greenhouse-training.pptx){ .md-button }
 </div>
 
 ## What This Repository Demonstrates
@@ -76,7 +79,7 @@ Greenhouse Sentinel samples temperature, humidity, and soil moisture every 60 se
 - **Product documentation** proves the workflow can support task-based technical content. Start with the [quick start](product/quickstart.md), [operating guide](product/operations.md), and [architecture](product/architecture.md).
 - **Repository documentation** reveals how the example is assembled and governed. Read [How This Repository Works](about/how-it-works.md) and [Build It from Scratch](about/build-from-scratch.md).
 - **Contributor guidance** makes quality expectations explicit and repeatable. Review the [writing guide](contributing/writing-guide.md), [accessibility standard](contributing/accessibility.md), and [release checklist](contributing/release-checklist.md).
-- **Generated deliverables** prove that one reviewed source can support several channels. Use the Word and PDF download buttons above to inspect the portable versions.
+- **Generated deliverables** prove that maintained content can support several channels. Use the Word, PDF, and PowerPoint download buttons above to inspect the portable versions.
 
 ## Public Portfolio Scope
 
