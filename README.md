@@ -69,6 +69,16 @@ python scripts/export_handbook.py
 
 The script creates `deliverables/greenhouse-sentinel-handbook.docx`. PDF conversion is performed in CI with LibreOffice when available.
 
+### Generate Jay's training deck
+
+`training/jays-book.json` defines the slide order. Entries with a `source` value reference a heading in Katie's maintained Markdown, while entries with `title` and `content` hold Jay's training-only material.
+
+```bash
+node scripts/generate_training_deck.mjs
+```
+
+The generator creates `deliverables/jays-greenhouse-training.pptx`. Edit the Markdown or the book, then run the command again; the PowerPoint is generated output rather than another source to maintain.
+
 Zensical 0.0.23 currently warns that strict mode is unsupported. The command is retained so the repository adopts strict behavior when the renderer supports it. `scripts/validate_docs.py` is the enforceable, renderer-independent quality gate today.
 
 ## Make It Match Another Brand

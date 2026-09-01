@@ -2,4 +2,4 @@ site/
 .venv/
 __pycache__/
 work/
-
+node_modules/
