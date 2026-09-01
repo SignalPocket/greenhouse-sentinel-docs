@@ -25,6 +25,7 @@ nav = [
   { "Contribute" = [
     { "Writing Guide" = "contributing/writing-guide.md" },
     { "Accessibility" = "contributing/accessibility.md" },
+    { "Automated Testing" = "contributing/automated-testing.md" },
     { "Release Checklist" = "contributing/release-checklist.md" },
   ] },
 ]

@@ -6,6 +6,8 @@
 - [ ] `zensical build --strict` succeeds.
 - [ ] Every maintained page is present in explicit navigation.
 - [ ] Internal files and anchors resolve.
+- [ ] Browser tests report no serious or critical axe violations.
+- [ ] Responsive tests report no horizontal overflow at every required width.
 - [ ] Word and PDF outputs are generated and pass artifact checks.
 
 ## Editorial Review
