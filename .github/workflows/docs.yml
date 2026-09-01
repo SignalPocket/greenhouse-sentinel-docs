@@ -38,11 +38,12 @@ jobs:
           sudo apt-get install -y --no-install-recommends libreoffice-writer fonts-crosextra-carlito fonts-dejavu-core
           fc-match Carlito | grep -qi Carlito
           libreoffice --headless --convert-to pdf --outdir deliverables deliverables/greenhouse-sentinel-handbook.docx
-      - name: Add handbooks to the published site
+      - name: Add downloads to the published site
         run: |
           mkdir -p site/downloads
           cp deliverables/greenhouse-sentinel-handbook.docx site/downloads/
           cp deliverables/greenhouse-sentinel-handbook.pdf site/downloads/
+          cp deliverables/jays-greenhouse-training.pptx site/downloads/
       - name: Check generated artifacts
         run: |
           test -s deliverables/greenhouse-sentinel-handbook.docx
@@ -50,6 +51,7 @@ jobs:
           test -s site/index.html
           test -s site/downloads/greenhouse-sentinel-handbook.docx
           test -s site/downloads/greenhouse-sentinel-handbook.pdf
+          test -s site/downloads/jays-greenhouse-training.pptx
           grep -q 'assets/stylesheets/brand-2026.css' site/index.html
           python -c "from zipfile import ZipFile; archive = ZipFile('deliverables/greenhouse-sentinel-handbook.docx'); footer = b''.join(archive.read(name) for name in archive.namelist() if name.startswith('word/footer')); assert b'PAGE' in footer and b'NUMPAGES' in footer"
       - uses: actions/upload-artifact@v4
@@ -59,6 +61,7 @@ jobs:
             site/
             deliverables/*.docx
             deliverables/*.pdf
+            deliverables/*.pptx
       - name: Configure GitHub Pages
         if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v5
