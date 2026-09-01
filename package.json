@@ -4,9 +4,7 @@
   "scripts": {
     "test": "playwright test",
     "test:a11y": "playwright test --grep @a11y",
-    "test:responsive": "playwright test --grep @responsive",
-    "test:visual": "playwright test --grep @visual",
-    "test:visual:update": "playwright test --grep @visual --update-snapshots"
+    "test:responsive": "playwright test --grep @responsive"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.10.2",
