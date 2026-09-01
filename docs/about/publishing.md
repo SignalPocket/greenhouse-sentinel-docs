@@ -24,12 +24,12 @@ CI uses LibreOffice to convert the generated Word file to PDF. Both files are ch
 
 The website, Word handbook, and PDF handbook are three presentations of the same reviewed Markdown source. Authors do not update any of them separately. After an approved Markdown change is merged, the workflow rebuilds the site, generates Word, converts Word to PDF, verifies all three outputs, and publishes them together.
 
-The training PowerPoint follows a related path: Jay's training book references selected maintained sections and adds training-only content, then the generator creates the `.pptx`. The deck is published output, not another source file to edit.
+The training PowerPoint follows a related path: the training book references selected maintained sections and adds training-only content, then the generator creates the `.pptx`. The deck is published output, not another source file to edit.
 
 <div class="hero-actions" markdown>
 [Download the Word handbook](https://signalpocket.github.io/greenhouse-sentinel-docs/downloads/greenhouse-sentinel-handbook.docx){ .md-button }
 [Download the PDF handbook](https://signalpocket.github.io/greenhouse-sentinel-docs/downloads/greenhouse-sentinel-handbook.pdf){ .md-button }
-[Download the training PowerPoint](https://signalpocket.github.io/greenhouse-sentinel-docs/downloads/jays-greenhouse-training.pptx){ .md-button }
+[Download the training PowerPoint](https://signalpocket.github.io/greenhouse-sentinel-docs/downloads/greenhouse-sentinel-operator-training.pptx){ .md-button }
 </div>
 
 ## Renderer-Independent Gates

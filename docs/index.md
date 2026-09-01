@@ -26,12 +26,12 @@ Authors maintain one set of accessible Markdown files. Automated checks verify n
 
 The Word and PDF files are not separately maintained copies. When an approved Markdown change is merged, automation rebuilds all three outputs together.
 
-Jay's training book references selected sections from the same Markdown and adds a small amount of training-only material. A generator turns that book into a PowerPoint deck, so reused product content stays aligned without making the `.pptx` another source to maintain.
+The training book references selected sections from the same Markdown and adds a small amount of training-only material. A generator turns that book into a PowerPoint deck, so reused product content stays aligned without making the `.pptx` another source to maintain.
 
 <div class="hero-actions" markdown>
 [Download the Word handbook](https://signalpocket.github.io/greenhouse-sentinel-docs/downloads/greenhouse-sentinel-handbook.docx){ .md-button }
 [Download the PDF handbook](https://signalpocket.github.io/greenhouse-sentinel-docs/downloads/greenhouse-sentinel-handbook.pdf){ .md-button }
-[Download the training PowerPoint](https://signalpocket.github.io/greenhouse-sentinel-docs/downloads/jays-greenhouse-training.pptx){ .md-button }
+[Download the training PowerPoint](https://signalpocket.github.io/greenhouse-sentinel-docs/downloads/greenhouse-sentinel-operator-training.pptx){ .md-button }
 </div>
 
 ## What This Repository Demonstrates

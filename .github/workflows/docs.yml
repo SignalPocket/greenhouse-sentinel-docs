@@ -43,7 +43,7 @@ jobs:
           mkdir -p site/downloads
           cp deliverables/greenhouse-sentinel-handbook.docx site/downloads/
           cp deliverables/greenhouse-sentinel-handbook.pdf site/downloads/
-          cp deliverables/jays-greenhouse-training.pptx site/downloads/
+          cp deliverables/greenhouse-sentinel-operator-training.pptx site/downloads/
       - name: Check generated artifacts
         run: |
           test -s deliverables/greenhouse-sentinel-handbook.docx
@@ -51,7 +51,7 @@ jobs:
           test -s site/index.html
           test -s site/downloads/greenhouse-sentinel-handbook.docx
           test -s site/downloads/greenhouse-sentinel-handbook.pdf
-          test -s site/downloads/jays-greenhouse-training.pptx
+          test -s site/downloads/greenhouse-sentinel-operator-training.pptx
           grep -q 'assets/stylesheets/brand-2026.css' site/index.html
           python -c "from zipfile import ZipFile; archive = ZipFile('deliverables/greenhouse-sentinel-handbook.docx'); footer = b''.join(archive.read(name) for name in archive.namelist() if name.startswith('word/footer')); assert b'PAGE' in footer and b'NUMPAGES' in footer"
       - uses: actions/upload-artifact@v4

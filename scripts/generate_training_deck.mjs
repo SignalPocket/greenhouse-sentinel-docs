@@ -6,8 +6,8 @@ import { fileURLToPath } from "node:url";
 import { Presentation, PresentationFile } from "@oai/artifact-tool";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const DEFAULT_BOOK = path.join(ROOT, "training", "jays-book.json");
-const DEFAULT_OUTPUT = path.join(ROOT, "deliverables", "jays-greenhouse-training.pptx");
+const DEFAULT_BOOK = path.join(ROOT, "training", "operator-training-book.json");
+const DEFAULT_OUTPUT = path.join(ROOT, "deliverables", "greenhouse-sentinel-operator-training.pptx");
 
 function slugify(value) {
   return value

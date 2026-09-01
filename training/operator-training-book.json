@@ -1,7 +1,7 @@
 {
   "title": "Greenhouse Sentinel Operator Training",
   "subtitle": "A short practice deck for greenhouse volunteers",
-  "notes": "[Sources]\n- training/jays-book.json — deck title, sequence, and training framing.",
+  "notes": "[Sources]\n- training/operator-training-book.json — deck title, sequence, and training framing.",
   "slides": [
     {
       "source": "docs/product/quickstart.md#connect-and-verify",
@@ -22,7 +22,7 @@
         "In pairs, identify the first inspection step and explain what you would record.",
         "Be ready to share one concise acknowledgement note."
       ],
-      "notes": "[Sources]\n- training/jays-book.json — Jay's training-only exercise; not copied from Katie's maintained product documentation."
+      "notes": "[Sources]\n- training/operator-training-book.json — training-only exercise; not copied from Katie's maintained product documentation."
     }
   ]
 }
