@@ -2,4 +2,6 @@ site/
 .venv/
 __pycache__/
 work/
-
+node_modules/
+playwright-report/
+test-results/
