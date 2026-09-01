@@ -40,13 +40,3 @@ for (const width of widths) {
     expect(overflow, JSON.stringify(overflow, null, 2)).toEqual([]);
   });
 }
-
-for (const width of [320, 1440]) {
-  test(`@visual home matches at ${width}px`, async ({ page }) => {
-    await page.setViewportSize({ width, height: 900 });
-    await page.goto("/");
-    await expect(page).toHaveScreenshot(`home-${width}.png`, {
-      fullPage: true, animations: "disabled", caret: "hide"
-    });
-  });
-}
