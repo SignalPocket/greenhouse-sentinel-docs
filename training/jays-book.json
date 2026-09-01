@@ -1,15 +1,19 @@
 {
   "title": "Greenhouse Sentinel Operator Training",
   "subtitle": "A short practice deck for greenhouse volunteers",
+  "notes": "[Sources]\n- training/jays-book.json — deck title, sequence, and training framing.",
   "slides": [
     {
-      "source": "docs/product/quickstart.md#connect-and-verify"
+      "source": "docs/product/quickstart.md#connect-and-verify",
+      "notes": "[Sources]\n- docs/product/quickstart.md#connect-and-verify — single-sourced from Katie's maintained product documentation."
     },
     {
-      "source": "docs/product/operations.md#daily-check"
+      "source": "docs/product/operations.md#daily-check",
+      "notes": "[Sources]\n- docs/product/operations.md#daily-check — single-sourced from Katie's maintained product documentation."
     },
     {
-      "source": "docs/product/architecture.md#decision-states"
+      "source": "docs/product/architecture.md#decision-states",
+      "notes": "[Sources]\n- docs/product/architecture.md#decision-states — single-sourced from Katie's maintained product documentation."
     },
     {
       "title": "Practice: choose the next action",
@@ -17,7 +21,8 @@
         "The dashboard shows Watch after three consecutive high-temperature samples.",
         "In pairs, identify the first inspection step and explain what you would record.",
         "Be ready to share one concise acknowledgement note."
-      ]
+      ],
+      "notes": "[Sources]\n- training/jays-book.json — Jay's training-only exercise; not copied from Katie's maintained product documentation."
     }
   ]
 }
