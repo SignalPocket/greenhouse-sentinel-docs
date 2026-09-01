@@ -92,7 +92,10 @@ async function resolveSlides(book) {
     if (!relativePath || !anchor) throw new Error(`Invalid source reference: ${entry.source}`);
     const absolutePath = path.resolve(ROOT, relativePath);
     if (!absolutePath.startsWith(`${ROOT}${path.sep}`)) throw new Error(`Source is outside the repository: ${entry.source}`);
-    slides.push(parseSection(await fs.readFile(absolutePath, "utf8"), anchor));
+    slides.push({
+      ...parseSection(await fs.readFile(absolutePath, "utf8"), anchor),
+      notes: entry.notes,
+    });
   }
   return slides;
 }
@@ -110,12 +113,19 @@ function addText(slide, name, text, position, style) {
   return shape;
 }
 
+function addSpeakerNotes(slide, notes) {
+  if (!notes) return;
+  slide.speakerNotes.textFrame.setText(notes);
+  slide.speakerNotes.setVisible(true);
+}
+
 function addTitleSlide(presentation, book) {
   const slide = presentation.slides.add();
   slide.background.fill = "#FFFFFF";
   addText(slide, "eyebrow", "GREENHOUSE SENTINEL", { left: 48, top: 44, width: 440, height: 40 }, { fontSize: 20, bold: true, color: "#075E54" });
   addText(slide, "deck-title", book.title, { left: 48, top: 210, width: 1050, height: 210 }, { fontSize: 58, bold: true, color: "#000000" });
   addText(slide, "deck-subtitle", book.subtitle, { left: 48, top: 500, width: 820, height: 90 }, { fontSize: 28, color: "#34413E" });
+  addSpeakerNotes(slide, book.notes);
 }
 
 function addContentSlide(presentation, item, slideNumber) {
@@ -134,6 +144,7 @@ function addContentSlide(presentation, item, slideNumber) {
     );
   });
   addText(slide, `slide-${slideNumber}-footer`, String(slideNumber), { left: 1160, top: 660, width: 72, height: 26 }, { fontSize: 14, color: "#67736F", alignment: "right" });
+  addSpeakerNotes(slide, item.notes);
 }
 
 async function main() {

@@ -71,7 +71,7 @@ The script creates `deliverables/greenhouse-sentinel-handbook.docx`. PDF convers
 
 ### Generate Jay's training deck
 
-`training/jays-book.json` defines the slide order. Entries with a `source` value reference a heading in Katie's maintained Markdown, while entries with `title` and `content` hold Jay's training-only material.
+`training/jays-book.json` defines the slide order. Entries with a `source` value reference a heading in Katie's maintained Markdown, while entries with `title` and `content` hold Jay's training-only material. A `notes` value becomes PowerPoint speaker notes, making each slide's source visible in the generated deck.
 
 ```bash
 node scripts/generate_training_deck.mjs
