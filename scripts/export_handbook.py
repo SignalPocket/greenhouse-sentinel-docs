@@ -211,8 +211,11 @@ def add_page(doc, path):
         if heading:
             in_numbered_list = False
             level = min(len(heading.group(1)), 3)
-            if level == 1 and len(doc.paragraphs) > 4: doc.add_page_break()
             p = doc.add_heading(heading.group(2), level=level)
+            # Keep each chapter on a new page without inserting an empty page
+            # when the previous chapter already ends at a page boundary.
+            if level == 1 and len(doc.paragraphs) > 4:
+                p.paragraph_format.page_break_before = True
         elif re.match(r"^\d+\.\s+", line):
             p = doc.add_paragraph(style="List Number"); add_inline(p, re.sub(r"^\d+\.\s+", "", line))
             p.paragraph_format.left_indent = Inches(0.4)
