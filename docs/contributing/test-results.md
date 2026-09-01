@@ -27,22 +27,7 @@ A successful **validate-build-export** job additionally proves that the source v
 
 ## Accessibility Coverage
 
-Every maintained page receives its own axe scan:
-
-1. Overview
-2. Quick Start
-3. Operating Guide
-4. Architecture
-5. Troubleshooting
-6. Workflow Tour
-7. Build It from Scratch
-8. Branding
-9. Publishing
-10. Writing Guide
-11. Accessibility
-12. Automated Testing
-13. Release Checklist
-14. Test Evidence and Latest Results
+Every maintained page in the published documentation navigation receives its own axe scan. The current suite covers all **14 rendered pages**, spanning product guidance, the About material, contributor guidance, and this test-evidence page.
 
 The scan includes axe rules tagged `wcag2a`, `wcag2aa`, `wcag21a`, and `wcag21aa`. The test fails on serious or critical findings, including covered problems such as insufficient color contrast, missing accessible names, invalid ARIA relationships, and structural barriers detectable by axe.
 
