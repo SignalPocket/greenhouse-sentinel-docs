@@ -1,0 +1,15 @@
+{
+  "name": "greenhouse-sentinel-docs",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:a11y": "playwright test --grep @a11y",
+    "test:responsive": "playwright test --grep @responsive",
+    "test:visual": "playwright test --grep @visual",
+    "test:visual:update": "playwright test --grep @visual --update-snapshots"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.10.2",
+    "@playwright/test": "1.55.0"
+  }
+}
