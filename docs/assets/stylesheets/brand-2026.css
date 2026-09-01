@@ -42,6 +42,11 @@
   line-height: 1.65;
 }
 
+.md-typeset .admonition,
+.md-typeset details {
+  font-size: inherit;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
